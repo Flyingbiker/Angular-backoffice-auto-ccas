@@ -7,10 +7,12 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { EditGarageComponent } from './views/garages/edit-garage/edit-garage.component';
 import { GarageDetailComponent } from './views/garages/garage-detail/garage-detail.component';
 import { GaragesComponent } from './views/garages/garages/garages.component';
+import { SearchGarageComponent } from './views/garages/search-garage/search-garage.component';
 import { LoginComponent } from './views/login/login.component';
 import { PageFourOFourComponent } from './views/page-four-o-four/page-four-o-four.component';
 import { AddUserComponent } from './views/users/add-user/add-user.component';
 import { EditUserComponent } from './views/users/edit-user/edit-user.component';
+import { SearchUserComponent } from './views/users/search-user/search-user.component';
 import { UserDetailComponent } from './views/users/user-detail/user-detail.component';
 import { UsersComponent } from './views/users/users/users.component';
 
@@ -21,13 +23,16 @@ const routes: Routes = [
   {path:"users", component : UsersComponent},
   {path:"users/user/id", component : UserDetailComponent},
   {path:"users/edit/id", component : EditUserComponent},
+  {path:"users/search", component : SearchUserComponent},
   {path:"users/add", component : AddUserComponent},
   {path:"garages", component : GaragesComponent},
   {path:"garages/edit/id", component : EditGarageComponent},
   {path:"garages/garage/id", component : GarageDetailComponent},
+  {path:"garages/search", component : SearchGarageComponent},
   {path:"annonces", component : AnnoncesComponent},
   {path:"annonces/edit/id", component : EditAnnonceComponent},
   {path:"annonces/annonce/id", component : AnnonceDetailComponent},
+  {path:"annonces/search", component : SearchGarageComponent},
   {path:"page_404", component : PageFourOFourComponent},
   {path:"", component : LoginComponent},
 ];

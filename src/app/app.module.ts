@@ -19,6 +19,10 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { LoginComponent } from './views/login/login.component';
 import { PageFourOFourComponent } from './views/page-four-o-four/page-four-o-four.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchUserComponent } from './views/users/search-user/search-user.component';
+import { SearchGarageComponent } from './views/garages/search-garage/search-garage.component';
+import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-annonce.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +40,15 @@ import { HeaderComponent } from './components/header/header.component';
     DashboardComponent,
     LoginComponent,
     PageFourOFourComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchUserComponent,
+    SearchGarageComponent,
+    SearchAnnonceComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
