@@ -33,8 +33,7 @@ const routes: Routes = [
   {path:"annonces/edit/id", component : EditAnnonceComponent},
   {path:"annonces/annonce/id", component : AnnonceDetailComponent},
   {path:"annonces/search", component : SearchGarageComponent},
-  {path:"page_404", component : PageFourOFourComponent},
-  {path:"", component : LoginComponent},
+  {path:"**", component : PageFourOFourComponent},  
 ];
 
 @NgModule({
