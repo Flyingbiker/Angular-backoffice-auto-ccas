@@ -18,6 +18,7 @@ import { EditAnnonceComponent } from './views/annonces/edit-annonce/edit-annonce
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { LoginComponent } from './views/login/login.component';
 import { PageFourOFourComponent } from './views/page-four-o-four/page-four-o-four.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PageFourOFourComponent } from './views/page-four-o-four/page-four-o-fou
     EditAnnonceComponent,
     DashboardComponent,
     LoginComponent,
-    PageFourOFourComponent
+    PageFourOFourComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
