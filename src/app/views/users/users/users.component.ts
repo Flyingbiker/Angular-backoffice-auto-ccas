@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
         previousOccupation : 'previousOccupation'+i,
         email : 'email'+i,
         phoneNumber : 'phoneNumber'+i,
-        creationDate : new Date('2019/12/30'),
+        creationDate : new Date('2019/'+i+'/'+(i+1)*2),
       })
     }
   }

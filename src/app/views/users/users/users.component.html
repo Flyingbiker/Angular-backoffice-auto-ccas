@@ -1,15 +1,9 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col text-white">
-            <h2>Liste des professionnels</h2>
-        </div>
-        <div class="col">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
+    <div class="col text-white">
+        <h2>Liste des professionnels</h2>
     </div>
+    <!-- voir code sur https://ng-bootstrap.github.io/#/components/table/examples#complete -->
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -43,7 +37,7 @@
                                         <span class="text-muted">{{user.phoneNumber}}</span>
                                     </td>
                                     <td>
-                                        <span class="text-muted">{{user.creationDate}}</span><br>
+                                        <span class="text-muted">{{user.creationDate | date : 'mediumDate'}}</span><br>
                                     </td>
                                     <td>
                                         <select class="form-control category-select" id="exampleFormControlSelect1">
