@@ -1,3 +1,5 @@
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -50,7 +52,10 @@ import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-a
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
