@@ -18,7 +18,6 @@ import { UsersComponent } from './views/users/users/users.component';
 
 
 const routes: Routes = [
-  {path:"", component : LoginComponent},
   {path:"dashboard", component : DashboardComponent},
   {path:"users", component : UsersComponent},
   {path:"users/user/id", component : UserDetailComponent},
@@ -33,7 +32,9 @@ const routes: Routes = [
   {path:"annonces/edit/id", component : EditAnnonceComponent},
   {path:"annonces/annonce/id", component : AnnonceDetailComponent},
   {path:"annonces/search", component : SearchGarageComponent},
-  {path:"**", component : PageFourOFourComponent},  
+  {path:"", component : LoginComponent},
+  {path:'404-page', component : PageFourOFourComponent},
+  {path:"**", redirectTo : '404-page'},  
 ];
 
 @NgModule({
