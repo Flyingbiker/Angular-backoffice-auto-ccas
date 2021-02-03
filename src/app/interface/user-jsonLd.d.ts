@@ -4,7 +4,7 @@ export interface UserJsonLd {
     '@context'	: string;
     '@id' : string;
     '@type' : string;
-    id	: Number;  
+    id	: number;  
     lastName : string;
     firstName : string;
     email:string;

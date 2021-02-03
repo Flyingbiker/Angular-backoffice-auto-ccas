@@ -26,6 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchUserComponent } from './views/users/search-user/search-user.component';
 import { SearchGarageComponent } from './views/garages/search-garage/search-garage.component';
 import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-annonce.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-a
     BrowserModule,
     AppRoutingModule,
     NgbModule, 
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService,
