@@ -20,8 +20,8 @@ import { UsersComponent } from './views/users/users/users.component';
 const routes: Routes = [
   {path:"dashboard", component : DashboardComponent},
   {path:"users", component : UsersComponent},
-  {path:"users/user/id", component : UserDetailComponent},
-  {path:"users/edit/id", component : EditUserComponent},
+  {path:"users/user/:id", component : UserDetailComponent},
+  {path:"users/edit/:id", component : EditUserComponent},
   {path:"users/search", component : SearchUserComponent},
   {path:"users/add", component : AddUserComponent},
   {path:"garages", component : GaragesComponent},

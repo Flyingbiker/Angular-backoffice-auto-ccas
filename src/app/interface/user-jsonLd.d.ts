@@ -1,10 +1,10 @@
 //interface user refaite pendant le cours
 export interface UserJsonLd {
     //le ' permet de mettre l'@ dans l'attribut
-    '@context'	: string;
-    '@id' : string;
-    '@type' : string;
-    id	: number;  
+    '@context'?	: string;
+    '@id'? : string;
+    '@type'? : string;
+    id?	: number;  
     lastName : string;
     firstName : string;
     email:string;
