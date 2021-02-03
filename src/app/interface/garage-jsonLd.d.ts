@@ -1,12 +1,12 @@
 export interface GarageJsonLd {
-    '@context' : String;
-    '@id' : String;
-    '@type' : String;
-    id : Number;
-    name : String;
-    street? :String;
-    streetComplement? :String;
-    postalCode? :String;
-    city? :String;
-    owner :String;
+    '@context' : string;
+    '@id' : string;
+    '@type' : string;
+    id : number;
+    name : string;
+    street? :string;
+    streetComplement? :string;
+    postalCode? :string;
+    city? :string;
+    owner :string;
 }

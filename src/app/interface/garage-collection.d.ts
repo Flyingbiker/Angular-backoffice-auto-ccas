@@ -2,12 +2,12 @@ import { GarageJsonLd } from './garage-jsonLd.d';
 
 export interface GarageCollection {
     'hydra:member' : Array<GarageJsonLd>;
-    'hydra:totalItems' : Number;
+    'hydra:totalItems' : number;
     'hydra:view' : {
-        '@id' : String;
-        '@type' : String;
-        'hydra:first' : String;
-        'hydra:last' : String;
-        'hydra:next' : String;
+        '@id' : string;
+        '@type' : string;
+        'hydra:first' : string;
+        'hydra:last' : string;
+        'hydra:next' : string;
     };
 }

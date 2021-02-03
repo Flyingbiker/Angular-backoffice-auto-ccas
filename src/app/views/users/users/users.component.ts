@@ -11,6 +11,8 @@ import { Usercollection } from 'src/app/interface/user-collection';
 export class UsersComponent implements OnInit {
 
   public usersArray : Array<UserJsonLd> = [];
+  public prevLink : string |null = null;
+  public nextLink : string |null = null;
 
   constructor( private httpClient:HttpClient ) {   }
   
@@ -24,9 +26,36 @@ export class UsersComponent implements OnInit {
           //for (const user of response['hydra:member']){
           //   this.usersArray.push(user);            
           // }
-          // console.log(this.usersArray);          
+          // console.log(this.usersArray);  
+          
+          
+          //existe-til une valeur pour le next ? 
+          if (response['hydra:view']['hydra:next'] !== undefined){
+            this.nextLink = response['hydra:view']['hydra:next'];
+          }
         },
         (error)=> {console.log('il y a eu une erreur de connexion ' + error);
+        }
+      );
+  }
+
+  public loadNextPage(): void {
+    if (this.nextLink !== null) {
+     this.loadPage(this.nextLink);
+    } 
+  }
+
+  private loadPage(page : string): void {
+    this.httpClient.get<Usercollection>('https://hb-bc-dwwm-2020.deploy.this-serv.com'+page)
+      .subscribe(
+        (response)=> {
+          this.usersArray = response['hydra:member'];
+
+          if (response['hydra:view']['hydra:next'] === undefined){
+            this.nextLink = null;
+          } else {
+            this.nextLink = response['hydra:view']['hydra:next'];
+          }
         }
       );
   }
