@@ -1,1 +1,49 @@
-<p>garages works!</p>
+<div class="container-fluid">
+    <div class="col text-white">
+        <h2>Liste des garages</h2>
+    </div>
+    <!-- voir code sur https://ng-bootstrap.github.io/#/components/table/examples#complete -->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table no-wrap user-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Nom du garage</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">rue</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Code Postal</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Ville</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Propriétaire</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let garage of garageArray">
+                                <tr>
+                                    <td class="pl-4">{{garage.id}}</td>
+                                    <td>
+                                        <h5 class="font-medium mb-0">{{garage.name}}</h5>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">{{garage.street}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">{{garage.postalCode}}</span><br>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">{{garage.city}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted"> {{garage.owner}}</span>
+                                    </td>                                                                     
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,6 @@
+import { GarageCollection } from './../../../interface/garage-collection.d';
+import { GarageJsonLd } from './../../../interface/garage-jsonLd.d';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GaragesComponent implements OnInit {
 
-  constructor() { }
+  public garageArray : Array<GarageJsonLd> = [];
+
+  constructor( private httpClient : HttpClient) { }
 
   ngOnInit(): void {
+    this.httpClient.get<GarageCollection>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages?page=1')
+      .subscribe(
+        (response) => { this.garageArray = response['hydra:member']},
+        (error) => {console.log('Echec de la requette : ' + error);
+        }
+      );
   }
 
 }
