@@ -56,6 +56,12 @@ export class UsersComponent implements OnInit {
           } else {
             this.nextLink = response['hydra:view']['hydra:next'];
           }
+
+          if (response['hydra:view']['hydra:previous'] === undefined) {
+            this.prevLink = null;
+          } else {
+            this.prevLink = response['hydra:view']['hydra:previous'];
+          }
         }
       );
   }

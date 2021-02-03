@@ -8,7 +8,8 @@ export interface Usercollection {
         '@type' : string;
         'hydra:first' : string;
         'hydra:last' : string;
-        'hydra:next' : string;
+        'hydra:next'? : string;
+        'hydra:previous'? : string;
     };
 // en attente de tout à l'h
     // 'hydra:search' : {
