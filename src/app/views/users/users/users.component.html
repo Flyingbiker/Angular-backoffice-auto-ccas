@@ -13,53 +13,37 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Nom</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Occupation</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Nom, prénom</th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Créé le</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Category</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Actions</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Téléphone</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Siret</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Garages</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">Adresse URI</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let user of usersArray; let i=index">
                                 <tr>
-                                    <td class="pl-4">{{i+1}}</td>
+                                    <td class="pl-4">{{user.id}}</td>
                                     <td>
                                         <h5 class="font-medium mb-0">{{user.firstName}}, {{user.lastName}}, </h5>
-                                        <span class="text-muted">{{user.city}}, {{user.country}}</span>
                                     </td>
                                     <td>
-                                        <span class="text-muted">{{user.actualOccupation}}</span><br>
-                                        <span class="text-muted">{{user.previousOccupation}}</span>
+                                        <span class="text-muted">{{user.email}}</span>
                                     </td>
                                     <td>
-                                        <span class="text-muted">{{user.email}}</span><br>
-                                        <span class="text-muted">{{user.phoneNumber}}</span>
+                                        <span class="text-muted">{{user.phone}}</span><br>
                                     </td>
                                     <td>
-                                        <span class="text-muted">{{user.creationDate | date : 'mediumDate'}}</span><br>
+                                        <span class="text-muted">{{user.siret}}</span>
                                     </td>
                                     <td>
-                                        <select class="form-control category-select" id="exampleFormControlSelect1">
-                                            <option>Modulator</option>
-                                            <option>Admin</option>
-                                            <option>User</option>
-                                            <option>Subscriber</option>
-                                        </select>
+                                        <span class="text-muted" *ngFor="let garage of user.garages">
+                                            <p>{{garage}}</p>
+                                        </span>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle"><i
-                                                class="fa fa-key"></i> </button>
-                                        <button type="button"
-                                            class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i
-                                                class="fa fa-trash"></i> </button>
-                                        <button type="button"
-                                            class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i
-                                                class="fa fa-edit"></i> </button>
-                                        <button type="button"
-                                            class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i
-                                                class="fa fa-upload"></i> </button>
-                                    </td>
+                                        <span class="text-muted">{{user['@id']}}</span><br>
+                                    </td>                                    
                                 </tr>
                             </tbody>
                         </table>

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,7 +51,8 @@ import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-a
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule, 
+    HttpClientModule
   ],
   providers: [
     UserService,
