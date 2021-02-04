@@ -1,0 +1,39 @@
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmitAddUser()">
+
+    <div class="form-group">
+      <label for="lastName">lastName</label>
+      <input type="text" class="form-control" formControlName="lastName" id="lastName">
+    </div>
+    <div class="form-group">
+      <label for="firstName">firstName</label>
+      <input type="text" class="form-control" formControlName="firstName" id="firstName">
+    </div>
+    <div class="form-group">
+      <label for="phone">phone</label>
+      <input type="text" class="form-control" formControlName="phone" id="phone">
+    </div>
+    <div class="form-group">
+      <label for="siret">email</label>
+      <input type="email" class="form-control" formControlName="email" id="email">
+    </div>
+    <div class="form-group">
+      <label for="siret">siret</label>
+      <input type="text" class="form-control" formControlName="siret" id="siret">
+    </div>
+    <div class="form-group">
+      <label for="garages">garages</label>
+      <input type="text" class="form-control" formControlName="garages" id="garages">
+    </div>
+  
+    <div>
+      <button type="submit" class="btn btn-primary" [disabled]="addUserForm.invalid">
+        Submit
+      </button>
+      <button type="reset" class="btn btn-primary">
+        reset
+      </button>
+      <button type="button" class="btn btn-primary" routerLink='/dashboard'>
+        Annuler
+      </button>
+    </div>
+  </form>

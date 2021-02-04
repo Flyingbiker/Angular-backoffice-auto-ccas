@@ -27,6 +27,7 @@ import { SearchUserComponent } from './views/users/search-user/search-user.compo
 import { SearchGarageComponent } from './views/garages/search-garage/search-garage.component';
 import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-annonce.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserFormComponent } from './forms/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     SearchUserComponent,
     SearchGarageComponent,
-    SearchAnnonceComponent
+    SearchAnnonceComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
