@@ -14,7 +14,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Nom, prénom</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Nom</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Prénom</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Téléphone</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Siret</th>
@@ -22,15 +23,17 @@
                                         <th scope="col" class="border-0 text-uppercase font-medium">Adresse URI</th>
                                     </tr>
                                     <tr>
+                                        <td></td>
+                                        <td></td>
                                         <!-- <td>
                                             <input type="text" class="form-control" [(ngModel)]="filterFirstName">
                                         </td>                                    
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filterLastname">
-                                        </td>                                    
-                                        <td>
                                             <input type="text" class="form-control" [(ngModel)]="filterEmail">
                                         </td>                                     -->
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filterLastname" name="filterLastname">
+                                        </td>                                    
                                         <td>
                                             <input type="text" class="form-control" [(ngModel)]="filterEmail" name="email">
                                         </td>  
@@ -41,7 +44,10 @@
                                     <tr>
                                         <td class="pl-4">{{user.id}}</td>
                                         <td>
-                                            <h5 class="font-medium mb-0">{{user.firstName}}, {{user.lastName}}, </h5>
+                                            <h5 class="font-medium mb-0">{{user.lastName}}, </h5>
+                                        </td>
+                                        <td>
+                                            <h5 class="font-medium mb-0">{{user.firstName}} </h5>
                                         </td>
                                         <td>
                                             <span class="text-muted">{{user.email}}</span>

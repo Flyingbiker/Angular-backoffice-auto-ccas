@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit {
   public lastPage : number|null = null;
 
   public filterEmail = '';
+  public filterLastname = '';
 
   constructor( private httpClient:HttpClient ) {   }
   
@@ -64,8 +65,17 @@ export class UsersComponent implements OnInit {
   
 //si pas de valeur en paramètre, par défaut number = 1
   public applyFilters(page: number = 1):void {
-    console.log(this.filterEmail);
-    this.loadPage('/api/users?page='+page +'&email='+this.filterEmail);
+    let url = '/api/users?page='+page;
+
+    if (this.filterEmail !== ''){
+      url += '&email='+this.filterEmail;
+    }
+
+    if (this.filterLastname !== ''){
+      url += '&lastname='+this.filterLastname;
+    }
+    
+    this.loadPage(url);
   }
 
 
