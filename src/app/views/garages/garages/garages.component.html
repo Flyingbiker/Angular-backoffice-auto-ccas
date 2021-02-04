@@ -3,7 +3,7 @@
         <h2>Liste des garages</h2>
     </div>
     <!-- voir code sur https://ng-bootstrap.github.io/#/components/table/examples#complete -->
-    
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -37,7 +37,7 @@
                                     </td>
                                     <td>
                                         <span class="text-muted"> {{garage.owner}}</span>
-                                    </td>                                                                     
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -45,5 +45,18 @@
                 </div>
             </div>
         </div>
-    </div>   
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" (click)="loadPreviousPage()">Previous</a>
+                </li>
+                <li class="page-item" *ngFor="let page of getPageNumber">
+                    <a class="page-link" (click)="loadPageByNumber(page)">{{page}} </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" (click)="loadNextPage()">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>

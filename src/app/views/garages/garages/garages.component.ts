@@ -11,27 +11,85 @@ import { Component, OnInit } from '@angular/core';
 export class GaragesComponent implements OnInit {
 
   public garageArray : Array<GarageJsonLd> = [];  
-  public prevLink : String |null = null;
-  public nextLink : String |null = null;
+  public prevLink : string |null = null;
+  public nextLink : string |null = null;
+
+  public lastPage : number |null = null;
 
   constructor( private httpClient : HttpClient) { }
 
   ngOnInit(): void {
-    this.httpClient.get<GarageCollection>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages?page=1')
+    this.loadPage('/api/garages?page=1');
+  }
+
+  public loadNextPage(): void {
+    if (this.nextLink !== null){
+      this.loadPage(this.nextLink)
+    }
+  }
+  public loadPreviousPage(): void {
+    if (this.prevLink !== null){
+      this.loadPage(this.prevLink)
+    }
+  }
+
+  public loadPageByNumber(pageNumber : number) : void {
+
+  }
+
+  public get getPageNumber(): Array<number>{
+    const arr :Array<number> = [];
+    
+    if (this.lastPage !== null){
+      for (let i=1; i< this.lastPage; i++){
+        arr.push(i);
+      }
+    }
+    return arr;
+  }
+  
+  
+  public loadPage(page : string):void {
+    this.httpClient.get<GarageCollection>('https://hb-bc-dwwm-2020.deploy.this-serv.com'+page)
       .subscribe(
         (response) => { 
           this.garageArray = response['hydra:member'];
+          
 
-          //existe-til une valeur pour le next ? 
-          if (response['hydra:view']['hydra:next'] !== undefined){
-            
+          if (response['hydra:view']['hydra:next'] === undefined){
+            this.nextLink = null;
+          } else {
+            this.nextLink = response['hydra:view']['hydra:next'];
+          }
+
+          if (response['hydra:view']['hydra:previous'] === undefined) {
+            this.prevLink = null;
+          } else {
+            this.prevLink = response['hydra:view']['hydra:previous'];
+          }
+
+          if (response['hydra:view']['hydra:last'] === undefined){
+            this.lastPage = null;
+          } else {
+            const regex = /\?.*page=([0-9]+)/;
+            const str = response['hydra:view']['hydra:last'];
+
+            //la méthode match permet de comparer la regex avec la string
+            //ça donne un tableau avec en 2° index le retour de ce qui est entre ()
+            const matches = str.match(regex);
+
+            if (matches === null) {
+              this.lastPage = null;
+            } else {
+              this.lastPage = parseInt(matches[1]);
+            }
+
           }
         },
         (error) => {console.log('Echec de la requette : ' + error);
         }
-      );
+      );    
   }
-
 
 
 }
