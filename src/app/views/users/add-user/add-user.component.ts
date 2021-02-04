@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { UserJsonLd } from 'src/app/interface/user-jsonLd';
+import { User } from 'src/app/interface/user';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class AddUserComponent implements OnInit {
 
-  public addUser : UserJsonLd|null = null;
+  public addUser : User|null = null;
   public addUserForm = new FormGroup({
     'lastName' : new FormControl('', [Validators.required]),
     'firstName' :  new FormControl('', [Validators.required]),
@@ -31,8 +32,8 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {  }
   
-  public onSubmitAddUser() : Observable<UserJsonLd> | void { 
-    const user = this.addUserForm.value as UserJsonLd;
+  public onSubmitAddUser() : Observable<User> | void { 
+    const user = this.addUserForm.value as User;
     this.addUser = {
       lastName : user.lastName,
       firstName :  user.firstName,

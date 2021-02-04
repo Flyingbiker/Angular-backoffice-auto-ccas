@@ -11,5 +11,5 @@ export interface UserJsonLd {
     //le ? permet de mettre l'attribu comme optionnel et donc d'être à null
     phone? : string ;
     siret? : string;
-    garages : Array<string>;
+    garages? : Array<string>;
 }
