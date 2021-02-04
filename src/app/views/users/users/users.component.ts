@@ -16,6 +16,8 @@ export class UsersComponent implements OnInit {
 
   public lastPage : number|null = null;
 
+  public filterEmail = '';
+
   constructor( private httpClient:HttpClient ) {   }
   
   ngOnInit(): void {
@@ -56,14 +58,22 @@ export class UsersComponent implements OnInit {
   }
 
   public loadPageByNumber(pageNumber: number):void{
-    this.loadPage('/api/users?page=' + pageNumber);
+    this.applyFilters(pageNumber);
+    // ('/api/users?page=' + pageNumber);
   }
+  
+//si pas de valeur en paramètre, par défaut number = 1
+  public applyFilters(page: number = 1):void {
+    console.log(this.filterEmail);
+    this.loadPage('/api/users?page='+page +'&email='+this.filterEmail);
+  }
+
 
   public get getPageNumber(): Array<number> {
     const arr : Array<number> = [];
 
     if (this.lastPage !== null) {
-      for (let i = 1 ; i <this.lastPage; i++){
+      for (let i = 1 ; i <=this.lastPage; i++){
         arr.push(i);      
       }
     }
@@ -109,5 +119,7 @@ export class UsersComponent implements OnInit {
         }
       );
   }
+
+
 
 }

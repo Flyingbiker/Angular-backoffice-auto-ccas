@@ -41,7 +41,7 @@ export class GaragesComponent implements OnInit {
     const arr :Array<number> = [];
     
     if (this.lastPage !== null){
-      for (let i=1; i< this.lastPage; i++){
+      for (let i=1; i <= this.lastPage; i++){
         arr.push(i);
       }
     }
