@@ -2,6 +2,7 @@ import { UserJsonLd } from './../../../interface/user-jsonLd.d';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Usercollection } from 'src/app/interface/user-collection';
+import { UsercollectionFilter } from 'src/app/interface/user-filters';
 
 @Component({
   selector: 'app-users',
@@ -16,8 +17,10 @@ export class UsersComponent implements OnInit {
 
   public lastPage : number|null = null;
 
-  public filterEmail = '';
-  public filterLastname = '';
+  public filters: UsercollectionFilter = {
+    email:'',
+    lastName:'',
+  };
 
   constructor( private httpClient:HttpClient ) {   }
   
@@ -67,14 +70,15 @@ export class UsersComponent implements OnInit {
   public applyFilters(page: number = 1):void {
     let url = '/api/users?page='+page;
 
-    if (this.filterEmail !== ''){
-      url += '&email='+this.filterEmail;
+    for (const key of Object.keys(this.filters)){
+      if (key in this.filters) {
+        const val = this.filters[key as keyof UsercollectionFilter];
+  
+        if (val !== ''){
+          url += '&' + key + '=' + val;
+        }
+      }
     }
-
-    if (this.filterLastname !== ''){
-      url += '&lastname='+this.filterLastname;
-    }
-    
     this.loadPage(url);
   }
 

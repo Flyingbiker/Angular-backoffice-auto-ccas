@@ -9,44 +9,63 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="table-responsive">
-                        <table class="table no-wrap user-table mb-0">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Nom du garage</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">rue</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Code Postal</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Ville</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Propriétaire</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let garage of garageArray">
-                                <tr>
-                                    <td class="pl-4">{{garage.id}}</td>
-                                    <td>
-                                        <h5 class="font-medium mb-0">{{garage.name}}</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted">{{garage.street}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted">{{garage.postalCode}}</span><br>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted">{{garage.city}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted"> {{garage.owner}}</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <form #formFilters="ngForm" (ngSubmit)="applyFilters()">
+                            <table class="table no-wrap user-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Nom du garage</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">rue</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Code Postal</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Ville</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Propriétaire</th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="text" name="" class="form-control" [(ngModel)]="filters.name" name="name">
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <input type="text" name="" class="form-control" [(ngModel)]="filters.postalCode" name="postalCode">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="" class="form-control" [(ngModel)]="filters.city" name="city">
+                                        </td>
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let garage of garageArray">
+                                    <tr>
+                                        <td class="pl-4">{{garage.id}}</td>
+                                        <td>
+                                            <h5 class="font-medium mb-0">{{garage.name}}</h5>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{garage.street}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{garage.postalCode}}</span><br>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{garage.city}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted"> {{garage.owner}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center flex-wrap">
                 <li class="page-item">
                     <a class="page-link" (click)="loadPreviousPage()">Previous</a>
                 </li>

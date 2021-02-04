@@ -1,3 +1,4 @@
+import { GarageCollectionFilter } from './../../../interface/garage-filters.d';
 import { GarageCollection } from './../../../interface/garage-collection.d';
 import { GarageJsonLd } from './../../../interface/garage-jsonLd.d';
 import { HttpClient } from '@angular/common/http';
@@ -16,6 +17,12 @@ export class GaragesComponent implements OnInit {
 
   public lastPage : number |null = null;
 
+  public filters : GarageCollectionFilter = {
+    name : '',
+    postalCode : '',
+    city : ''
+  }
+
   constructor( private httpClient : HttpClient) { }
 
   ngOnInit(): void {
@@ -33,8 +40,24 @@ export class GaragesComponent implements OnInit {
     }
   }
 
-  public loadPageByNumber(pageNumber : number) : void {
+  public applyFilters(page : number = 1) : void {
+    
+    let url = '/api/garages?page='+page;
 
+    for (const key of Object.keys(this.filters)){
+      if (key in this.filters){
+        const val = this.filters[key as keyof GarageCollectionFilter];
+
+        if (val !== ''){
+          url += '&' + key + '=' + val;
+        }
+      }
+    }
+    this.loadPage(url);
+  }
+
+  public loadPageByNumber(pageNumber : number) : void {
+    this.applyFilters(pageNumber);
   }
 
   public get getPageNumber(): Array<number>{

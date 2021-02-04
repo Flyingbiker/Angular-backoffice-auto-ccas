@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="table-responsive">
-                        <form #filters="ngForm" (ngSubmit)="applyFilters()">
+                        <form #formFilters="ngForm" (ngSubmit)="applyFilters()">
                             <table class="table no-wrap user-table mb-0">
                                 <thead>
                                     <tr>
@@ -24,7 +24,7 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td></td>
+                                   
                                         <!-- <td>
                                             <input type="text" class="form-control" [(ngModel)]="filterFirstName">
                                         </td>                                    
@@ -32,10 +32,11 @@
                                             <input type="text" class="form-control" [(ngModel)]="filterEmail">
                                         </td>                                     -->
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filterLastname" name="filterLastname">
-                                        </td>                                    
+                                            <input type="text" class="form-control" [(ngModel)]="filters.lastName" name="filterLastname">
+                                        </td> 
+                                        <td></td>                                   
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filterEmail" name="email">
+                                            <input type="text" class="form-control" [(ngModel)]="filters.email" name="email">
                                         </td>  
                                         <button type="submit" class="btn btn-success">Search</button>                                  
                                     </tr>
