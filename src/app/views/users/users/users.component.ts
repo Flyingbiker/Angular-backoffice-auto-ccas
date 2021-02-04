@@ -45,6 +45,12 @@ export class UsersComponent implements OnInit {
     } 
   }
 
+  public loadPreviousPage() : void {
+    if (this.prevLink !== null) {
+      this.loadPage(this.prevLink);
+     } 
+  }
+
   private loadPage(page : string): void {
     this.httpClient.get<Usercollection>('https://hb-bc-dwwm-2020.deploy.this-serv.com'+page)
       .subscribe(
