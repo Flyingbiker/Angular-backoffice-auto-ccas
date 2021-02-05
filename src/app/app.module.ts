@@ -23,9 +23,6 @@ import { LoginComponent } from './views/login/login.component';
 import { PageFourOFourComponent } from './views/page-four-o-four/page-four-o-four.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SearchUserComponent } from './views/users/search-user/search-user.component';
-import { SearchGarageComponent } from './views/garages/search-garage/search-garage.component';
-import { SearchAnnonceComponent } from './views/annonces/search-annonce/search-annonce.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './forms/user-form/user-form.component';
 
@@ -46,9 +43,6 @@ import { UserFormComponent } from './forms/user-form/user-form.component';
     LoginComponent,
     PageFourOFourComponent,
     HeaderComponent,
-    SearchUserComponent,
-    SearchGarageComponent,
-    SearchAnnonceComponent,
     UserFormComponent
   ],
   imports: [
