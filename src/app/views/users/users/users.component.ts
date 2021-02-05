@@ -18,8 +18,10 @@ export class UsersComponent implements OnInit {
   public lastPage : number|null = null;
 
   public filters: UsercollectionFilter = {
-    email:'',
     lastName:'',
+    firstName:'',
+    email:'',    
+    siret:'',
   };
 
   constructor( private httpClient:HttpClient ) {   }

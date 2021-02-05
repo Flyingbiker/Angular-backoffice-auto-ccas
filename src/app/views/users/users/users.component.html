@@ -23,26 +23,28 @@
                                         <th scope="col" class="border-0 text-uppercase font-medium">Adresse URI</th>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                   
-                                        <!-- <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filterFirstName">
-                                        </td>                                    
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filterEmail">
-                                        </td>                                     -->
+                                            <button type="submit" class="btn btn-success">Search</button>
+                                        </td>
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filters.lastName" name="filterLastname">
-                                        </td> 
-                                        <td></td>                                   
+                                            <input type="text" class="form-control" [(ngModel)]="filters.lastName" name="filterLastName">
+                                        </td>                                   
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="filters.email" name="email">
+                                            <input type="text" class="form-control" [(ngModel)]="filters.firstName" name="filterFirstName">
+                                        </td>                                                                           
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.email" name="filterEmail">
                                         </td>  
-                                        <button type="submit" class="btn btn-success">Search</button>                                  
+                                        <td></td>  
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.siret" name="filterSiret">
+                                        </td>  
+                                        <td></td>  
+                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let user of usersArray; let i=index">
-                                    <tr>
+                                    <tr >
                                         <td class="pl-4">{{user.id}}</td>
                                         <td>
                                             <h5 class="font-medium mb-0">{{user.lastName}}, </h5>

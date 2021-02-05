@@ -86,7 +86,7 @@ export class UserFormComponent implements OnInit {
       } else if (postOrPatch === 'Modifier') { 
         console.log('méthode Patch');
         
-        // this.httpClient.post<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users',
+        // this.httpClient.past<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users',
         //   this.addUser).subscribe(
         //     (response) => {console.log(response);
               
