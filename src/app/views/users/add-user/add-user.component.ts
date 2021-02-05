@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
 
+  public btnName : string = 'ajouter';
 
   constructor() {   }
 
