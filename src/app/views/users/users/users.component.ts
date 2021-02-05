@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserJsonLd } from './../../../interface/user-jsonLd.d';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +25,8 @@ export class UsersComponent implements OnInit {
     siret:'',
   };
 
-  constructor( private httpClient:HttpClient ) {   }
+  constructor( private httpClient:HttpClient,
+                private router:Router ) {   }
   
   ngOnInit(): void {
     //après le get les <> permet de préciser le type de données que l'on 
@@ -136,6 +138,9 @@ export class UsersComponent implements OnInit {
       );
   }
 
+  public goToDetailUser(index:number = 0){    
+    this.router.navigate(['/users/user/'+index]);
+  }
 
 
 }

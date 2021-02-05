@@ -20,7 +20,6 @@
                                         <th scope="col" class="border-0 text-uppercase font-medium">Téléphone</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Siret</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Garages</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Adresse URI</th>
                                     </tr>
                                     <tr>
                                         <td>
@@ -39,11 +38,11 @@
                                         <td>
                                             <input type="text" class="form-control" [(ngModel)]="filters.siret" name="filterSiret">
                                         </td>  
-                                        <td></td>  
+                                        <td></td>
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let user of usersArray; let i=index">
+                                <tbody *ngFor="let user of usersArray; let i=index" (click)="goToDetailUser(user.id)">
                                     <tr >
                                         <td class="pl-4">{{user.id}}</td>
                                         <td>
@@ -66,9 +65,10 @@
                                                 <p>{{garage}}</p>
                                             </span>
                                         </td>
-                                        <td>
-                                            <span class="text-muted">{{user['@id']}}</span><br>
-                                        </td>                                    
+                                        <td class="text-center btn-group-vertical">
+                                            <button class="btn btn-warning">Modifier</button>
+                                            <button class="btn btn-danger">Supprimer</button>
+                                        </td>                                  
                                     </tr>
                                 </tbody>
                             </table>

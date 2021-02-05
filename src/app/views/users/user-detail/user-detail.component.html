@@ -1,1 +1,19 @@
-<p>user-detail works!</p>
+<div class="container">
+    <h2>user-detail works! index : {{indexUser}} </h2>
+    <p>id : {{userDetail?.id}} </p>
+    <p>Nom : {{userDetail?.lastName}} </p>
+    <p>Prénom : {{userDetail?.firstName}} </p>
+    <p>email : {{userDetail?.email}} </p>
+    <p>phone : {{userDetail?.phone}} </p>
+    <p>siret : {{userDetail?.siret}} </p>
+    <div>
+        <p>garages :</p>     
+        <ul *ngFor="let garage of userDetail?.garages">
+            <li class="link" routerLink="'/garages/'+garage">{{garage}}</li>        
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary">Retour vers les professionnels</button>
+        <button class="btn btn-primary">Retour au dashboard</button>
+    </div>
+</div>

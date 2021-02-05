@@ -1,4 +1,8 @@
+import { Usercollection } from 'src/app/interface/user-collection';
+import { UserJsonLd } from 'src/app/interface/user-jsonLd';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor() { }
+  public indexUser = 0;
+  public userDetail : UserJsonLd|null = null;
 
-  ngOnInit(): void {
+  constructor(private route : ActivatedRoute, 
+              private httpClient: HttpClient) { }
+
+  ngOnInit(): void { 
+    this.indexUser = this.route.snapshot.params['id'];
+    this.loadUserDetails(this.indexUser);
   }
 
+  public loadUserDetails(index : number): void {
+    this.httpClient.get<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users/'+index)
+      .subscribe(
+        (response)=>{
+          this.userDetail = response;
+          console.log(this.userDetail);
+          
+         },
+        (error)=> {
+          console.log("le message d'erreur : "+ error);          
+        }
+      )    
+    
+  }
 }
