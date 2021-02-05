@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUserComponent implements OnInit {
 
+  public btnName : string = 'Modifier';
+
   constructor() { }
 
   ngOnInit(): void {

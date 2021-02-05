@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class UserFormComponent implements OnInit {
 
-  @Input() btnName: string |null = null;
+  @Input() btnName: string = '';
 
   public addUser : User|null = null;
   public addUserForm = new FormGroup({
@@ -35,7 +35,8 @@ export class UserFormComponent implements OnInit {
                                     ]),
     siret :  new FormControl('', [Validators.minLength(14), Validators.maxLength(14)]),
     // 'garages' : new FormControl(''),
-    garages : new FormArray([])
+    garages : new FormControl('')
+    // garages : new FormArray([new FormControl('') ])
   });
 
   //getter mis pour pouvoir afficher les messages d'erreur
@@ -53,7 +54,7 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onSubmitAddUser() : Observable<User> | void { 
+  public onSubmit(postOrPatch : string) : Observable<User> | void { 
     const user = this.addUserForm.value as User;
     this.addUser = {
       lastName : user.lastName,
@@ -66,21 +67,37 @@ export class UserFormComponent implements OnInit {
     }
     // this.addUser = this.addUserForm.value;
     // console.log(this.addUser,  this.addUserForm); 
-      
-    this.httpClient.post<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users',
-      this.addUser).subscribe(
-        (response) => {console.log(response);
-          
-          const id = response.id;
-          console.log(id);
-          
-          this.router.navigate(['users/user/'+id])
-        },
-        (error) => {console.log('erreur de la requète : '+ error);
-        }
-    );
 
-    
-  }
+    if (postOrPatch === 'Ajouter'){
+      console.log('méthode post');
+      this.httpClient.post<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users',
+        this.addUser).subscribe(
+          (response) => {console.log(response);
+            
+            const id = response.id;
+            console.log(id);
+            
+            this.router.navigate(['users/user/'+id])
+          },
+          (error) => {console.log('erreur de la requète : '+ error);
+          }
+          );
+          
+      } else if (postOrPatch === 'Modifier') { 
+        console.log('méthode Patch');
+        
+        // this.httpClient.post<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users',
+        //   this.addUser).subscribe(
+        //     (response) => {console.log(response);
+              
+        //       const id = response.id;
+        //       console.log(id);
+              
+        //       this.router.navigate(['users/user/'+id])
+        //     },
+        //     (error) => {console.log('erreur de la requète : '+ error);
+        //     });
+      }
+    }
 
 }
