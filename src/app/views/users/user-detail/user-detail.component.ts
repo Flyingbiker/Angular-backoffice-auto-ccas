@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Usercollection } from 'src/app/interface/user-collection';
 import { UserJsonLd } from 'src/app/interface/user-jsonLd';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,8 @@ export class UserDetailComponent implements OnInit {
   public userDetail : UserJsonLd|null = null;
 
   constructor(private route : ActivatedRoute, 
-              private httpClient: HttpClient) { }
+              private httpClient: HttpClient,
+              private userService: UserService) { }
 
   ngOnInit(): void { 
     this.indexUser = this.route.snapshot.params['id'];
@@ -33,7 +35,10 @@ export class UserDetailComponent implements OnInit {
         (error)=> {
           console.log("le message d'erreur : "+ error);          
         }
-      )    
-    
+      )        
   }
+  public deleteUser(user : number): void {
+    this.userService.deletUser(user);
+  }
+    
 }

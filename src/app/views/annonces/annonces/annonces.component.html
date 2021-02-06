@@ -1,1 +1,106 @@
-<p>annonces works!</p>
+<div class="container-fluid">
+    <div class="text-white">
+        <h2 class="font-Permanent-Marker">Liste des professionnels</h2>
+    </div>
+    <!-- voir code sur https://ng-bootstrap.github.io/#/components/table/examples#complete -->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <form #formFilters="ngForm" (ngSubmit)="applyFilters()">
+                            <table class="table no-wrap user-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Titre</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Description</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Année de mise en circulation</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Kilométrage</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">prix</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Marque</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Modèle</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Carburant</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Garage</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.id" name="filterLastName">
+                                        </td>                                   
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.title" name="filterFirstName">
+                                        </td>                                                                           
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.description" name="filterEmail">
+                                        </td>  
+                                        <td></td>  
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.fuel" name="filterSiret">
+                                        </td>  
+                                        <td>
+                                            <input type="text" class="form-control" [(ngModel)]="filters.price" name="filterSiret">
+                                        </td>                                          
+                                        <td>
+                                            <button type="submit" class="btn btn-success">Search</button>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let annonce of annoncesArray; let i=index" >
+                                    <tr >
+                                        <td class="pl-4">{{annonce.id}}</td>
+                                        <td>
+                                            <h5 class="font-medium mb-0">{{annonce.title}}, </h5>
+                                        </td>
+                                        <td>
+                                            <h5 class="font-medium mb-0">{{annonce.description}} </h5>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.releaseYear}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.km}}</span><br>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.price}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.brand}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.model}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.fuel}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{annonce.garage}}</span>
+                                        </td>                                        
+                                        <!-- <td class="text-center btn-group-vertical">
+                                            <button class="btn btn-primary" [routerLink]="['/users/user',user.id]">Détails</button>
+                                            <button class="btn btn-warning" [routerLink]="['/users/edit',user.id]">Modifier</button>
+                                            <button class="btn btn-danger" (click)="deleteUser(user)">Supprimer</button>
+                                        </td>                                   -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item" *ngIf="prevLink !== null">
+                    <a class="page-link" (click)="loadPreviousPage()">Previous</a>
+                </li>
+              <li *ngFor="let page of getPageNumber" class="page-item">
+                <a class="page-link" (click)="loadPageByNumber(page)">{{page}}</a>
+              </li>
+                <li class="page-item"*ngIf="nextLink !== null">
+                    <a class="page-link" (click)="loadNextPage()">Next</a>
+                </li>
+            </ul>
+          </nav> -->
+    </div>
+</div>

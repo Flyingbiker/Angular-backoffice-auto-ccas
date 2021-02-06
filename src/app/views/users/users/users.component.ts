@@ -1,9 +1,12 @@
+
 import { Router } from '@angular/router';
 import { UserJsonLd } from './../../../interface/user-jsonLd.d';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Usercollection } from 'src/app/interface/user-collection';
 import { UsercollectionFilter } from 'src/app/interface/user-filters';
+import { Subscription } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -25,10 +28,18 @@ export class UsersComponent implements OnInit {
     siret:'',
   };
 
+  public usersSubscription: Subscription|null = null;
+
   constructor( private httpClient:HttpClient,
-                private router:Router ) {   }
+                private router:Router,
+                private userService: UserService ) {   }
   
   ngOnInit(): void {
+    this.usersSubscription = this.userService.usersListSubject.subscribe(
+      (usersArray : Array<UserJsonLd>) => {
+        this.usersArray = usersArray;
+      }
+    )
     //après le get les <> permet de préciser le type de données que l'on 
     //récupère. Cela permet ensuite l'autocomplétion
     this.loadPage('/api/users?page=1');
@@ -142,5 +153,10 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/users/user/'+index]);
   }
 
-
+  public deleteUser(user : UserJsonLd): void {
+    let index = user.id;
+    if (index !== undefined) {
+      this.userService.deletUser(index);
+    }
+  }
 }
