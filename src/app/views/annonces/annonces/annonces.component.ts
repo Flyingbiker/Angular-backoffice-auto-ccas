@@ -32,6 +32,7 @@ export class AnnoncesComponent implements OnInit {
     price : '' ,
   }
   public page = 1;
+  public pageSize = 30;
   public collectionSize :number = 0;
 
 
@@ -47,5 +48,11 @@ export class AnnoncesComponent implements OnInit {
 
   }
 
+  public pageChange(page : number): void{
+    if (page !== this.page){
+      console.log('page num : '+page);      
+      this.annoncesArray = this.annoncesService.loadPage('/api/listings?page='+page);
+    }
+  }
   
 }

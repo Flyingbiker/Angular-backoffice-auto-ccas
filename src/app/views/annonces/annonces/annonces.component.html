@@ -46,7 +46,7 @@
                                         </td>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let annonce of annoncesArray; let i=index" >
+                                <tbody *ngFor="let annonce of annoncesArray; let i=index;" >
                                     <tr >
                                         <td class="pl-4">{{annonce.id}}</td>
                                         <td>
@@ -75,12 +75,7 @@
                                         </td>
                                         <td>
                                             <span class="text-muted">{{annonce.garage}}</span>
-                                        </td>                                        
-                                        <!-- <td class="text-center btn-group-vertical">
-                                            <button class="btn btn-primary" [routerLink]="['/users/user',user.id]">Détails</button>
-                                            <button class="btn btn-warning" [routerLink]="['/users/edit',user.id]">Modifier</button>
-                                            <button class="btn btn-danger" (click)="deleteUser(user)">Supprimer</button>
-                                        </td>                                   -->
+                                        </td>                                                                                
                                     </tr>
                                 </tbody>
                             </table>
@@ -90,7 +85,11 @@
             </div>
         </div>
         <nav class="d-flex justify-content-center" aria-label="Page navigation example">
-            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+            <ngb-pagination [collectionSize]="collectionSize" 
+                (pageChange)="pageChange($event)" [(page)]="page" 
+                [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+                [pageSize]="pageSize" >
+            </ngb-pagination>
         </nav>
     </div>
 </div>
