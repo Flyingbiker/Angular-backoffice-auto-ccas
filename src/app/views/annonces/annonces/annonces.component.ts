@@ -31,14 +31,18 @@ export class AnnoncesComponent implements OnInit {
     fuel : '' ,
     price : '' ,
   }
+  public page = 1;
+  public collectionSize :number = 0;
+
 
   constructor(private annoncesService : AnnoncesService,
               private router : Router) { }
 
   ngOnInit(): void {
     this.annoncesArray = this.annoncesService.loadPage('/api/listings?page=1');
+    this.collectionSize = this.annoncesService.totalItemsAnnonces;
   }
-
+  
   public applyFilters():void {
 
   }

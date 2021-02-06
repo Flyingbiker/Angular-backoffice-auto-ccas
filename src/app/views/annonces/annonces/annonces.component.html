@@ -89,18 +89,8 @@
                 </div>
             </div>
         </div>
-        <!-- <nav class="d-flex justify-content-center" aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item" *ngIf="prevLink !== null">
-                    <a class="page-link" (click)="loadPreviousPage()">Previous</a>
-                </li>
-              <li *ngFor="let page of getPageNumber" class="page-item">
-                <a class="page-link" (click)="loadPageByNumber(page)">{{page}}</a>
-              </li>
-                <li class="page-item"*ngIf="nextLink !== null">
-                    <a class="page-link" (click)="loadNextPage()">Next</a>
-                </li>
-            </ul>
-          </nav> -->
+        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+        </nav>
     </div>
 </div>

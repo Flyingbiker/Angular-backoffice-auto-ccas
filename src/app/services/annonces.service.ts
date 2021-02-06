@@ -13,6 +13,7 @@ export class AnnoncesService {
   private annoncesArray : Array<AnnonceJsonLd> = [];
   
   public AnnoncesSubject = new Subject<AnnonceJsonLd[]>();
+  public totalItemsAnnonces : number = 0 ;
 
   constructor(private httpClient:HttpClient,
               private router:Router ) { }
@@ -27,6 +28,7 @@ export class AnnoncesService {
         (response)=> {
           this.annoncesArray = response['hydra:member'];
           this.emitAnnoncesSubject();
+          this.totalItemsAnnonces = response['hydra:totalItems'];
          
       }, 
         (error) => {
