@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="col text-white">
-        <h2>Liste des professionnels</h2>
+        <h2 class="font-Permanent-Marker">Liste des professionnels</h2>
     </div>
     <!-- voir code sur https://ng-bootstrap.github.io/#/components/table/examples#complete -->
     
@@ -42,7 +42,7 @@
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let user of usersArray; let i=index" (click)="goToDetailUser(user.id)">
+                                <tbody *ngFor="let user of usersArray; let i=index">
                                     <tr >
                                         <td class="pl-4">{{user.id}}</td>
                                         <td>
@@ -66,7 +66,8 @@
                                             </span>
                                         </td>
                                         <td class="text-center btn-group-vertical">
-                                            <button class="btn btn-warning">Modifier</button>
+                                            <button class="btn btn-primary" [routerLink]="['/users/user',user.id]">Détails</button>
+                                            <button class="btn btn-warning" [routerLink]="['/users/edit',user.id]">Modifier</button>
                                             <button class="btn btn-danger">Supprimer</button>
                                         </td>                                  
                                     </tr>

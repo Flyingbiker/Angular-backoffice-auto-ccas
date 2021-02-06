@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 export class UserFormComponent implements OnInit {
 
   @Input() btnName: string = '';
+  @Input() user: UserJsonLd|null = null;
 
   public addUser : User|null = null;
   public addUserForm = new FormGroup({

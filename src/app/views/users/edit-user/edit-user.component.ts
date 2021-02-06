@@ -1,3 +1,4 @@
+import { UserJsonLd } from 'src/app/interface/user-jsonLd';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class EditUserComponent implements OnInit {
 
   public btnName : string = 'Modifier';
+  public userToModify : UserJsonLd|null = null;
 
   constructor() { }
 

@@ -1,7 +1,7 @@
 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit(btnName)">
 
   <div class="form-group">
-    <label for="lastName">lastName</label>
+    <label for="lastName">Nom <span>*</span></label>
     <input type="text" class="form-control" formControlName="lastName" required id="lastName">
     <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="alert alert-danger">
       <div *ngIf="lastName?.errors?.required">lastName is required </div>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="firstName">firstName</label>
+    <label for="firstName">Prénom <span>*</span></label>
     <input type="text" class="form-control" formControlName="firstName" id="firstName">
     <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="alert alert-danger">
       <div *ngIf="firstName?.errors?.required">firstName is required </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="phone">phone</label>
+    <label for="phone">Téléphone <span>*</span></label>
     <input type="text" class="form-control" formControlName="phone" id="phone">
     <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="alert alert-danger">
       <div *ngIf="phone?.errors?.required">phone is required </div>
@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="siret">email</label>
+    <label for="siret">email <span>*</span></label>
     <input type="email" class="form-control" formControlName="email" id="email">
     <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
       <div *ngIf="email?.errors?.required">email is required </div>
@@ -56,7 +56,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="siret">siret</label>
+    <label for="siret">siret <span>*</span></label>
     <input type="text" class="form-control" formControlName="siret" id="siret">
     <div *ngIf="siret?.invalid && (siret?.dirty || siret?.touched)" class="alert alert-danger">
       <div *ngIf="siret?.errors?.required">siret is required </div>
