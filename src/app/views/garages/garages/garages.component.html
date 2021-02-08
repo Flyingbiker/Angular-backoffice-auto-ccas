@@ -19,9 +19,12 @@
                                         <th scope="col" class="border-0 text-uppercase font-medium">Code Postal</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Ville</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Propriétaire</th>
+                                        <th></th>
                                     </tr>
                                     <tr>
-                                        <td></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-success">Search</button>
+                                        </td>
                                         <td>
                                             <input type="text" name="" class="form-control" [(ngModel)]="filters.name" name="name">
                                         </td>
@@ -32,8 +35,9 @@
                                         <td>
                                             <input type="text" name="" class="form-control" [(ngModel)]="filters.city" name="city">
                                         </td>
-                                        <button type="submit" class="btn btn-success">Search</button>
-                                        
+                                        <td>
+                                            
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let garage of garageArray">
@@ -53,6 +57,15 @@
                                         </td>
                                         <td>
                                             <span class="text-muted"> {{garage.owner}}</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group" >
+                                                <button type="button" class="btn btn-warning"
+                                                    [routerLink]="['/garages/edit', garage.id]">
+                                                    Modifier
+                                                </button>
+                                                <button type="button" class="btn btn-danger" (click)="deleteGarage(garage.id)">Supprimer</button>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

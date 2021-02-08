@@ -3,6 +3,7 @@ import { GarageCollection } from './../../../interface/garage-collection.d';
 import { GarageJsonLd } from './../../../interface/garage-jsonLd.d';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-garages',
@@ -11,11 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GaragesComponent implements OnInit {
 
-  public garageArray : Array<GarageJsonLd> = [];  
+  public garageArray : Array<GarageJsonLd> = []; 
+
   public prevLink : string |null = null;
   public nextLink : string |null = null;
 
   public lastPage : number |null = null;
+  public actualPage : string = "/api/garages?page=1";
 
   public filters : GarageCollectionFilter = {
     name : '',
@@ -26,17 +29,19 @@ export class GaragesComponent implements OnInit {
   constructor( private httpClient : HttpClient) { }
 
   ngOnInit(): void {
-    this.loadPage('/api/garages?page=1');
+    this.loadPage(this.actualPage);
   }
 
   public loadNextPage(): void {
     if (this.nextLink !== null){
-      this.loadPage(this.nextLink)
+      this.loadPage(this.nextLink);
+      this.actualPage = this.nextLink;
     }
   }
   public loadPreviousPage(): void {
     if (this.prevLink !== null){
       this.loadPage(this.prevLink)
+      this.actualPage = this.prevLink;
     }
   }
 
@@ -106,7 +111,7 @@ export class GaragesComponent implements OnInit {
             } else {
               this.lastPage = parseInt(matches[1]);
             }
-
+            this.actualPage = page;
           }
         },
         (error) => {console.log('Echec de la requette : ' + error);
@@ -114,5 +119,23 @@ export class GaragesComponent implements OnInit {
       );    
   }
 
+  public deleteGarage(index:number): void {
+    
+    if (confirm('Etes-vous sur de vouloir supprimer ce garage ?')) {
+      this.httpClient.delete<GarageJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages/'+index)
+        .subscribe(
+          (data) => {
+            alert("suppression confirmée !"); 
+            this.loadPage(this.actualPage)  ;         
+          },
+          (error)=> {
+            console.error('erreur lors de la suppression', error);
+          }
+          
+        );
+
+    }
+
+  }
 
 }
