@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
@@ -41,18 +41,25 @@ export class UserFormComponent implements OnInit {
     if (userModel?.firstName) {
       this.addUserForm.get('firstName')?.setValue(userModel.firstName);
     }
-
     if (userModel?.lastName) {
       this.addUserForm.get('lastName')?.setValue(userModel.lastName);
     }
-
     if (userModel?.email) {
       this.addUserForm.get('email')?.setValue(userModel.email);
+    }
+    if (userModel?.phone) {
+      this.addUserForm.get('phone')?.setValue(userModel.phone);
+    }
+    if (userModel?.siret) {
+      this.addUserForm.get('siret')?.setValue(userModel.siret);
+    }
+    if (userModel?.garages) {
+      this.addUserForm.get('garages')?.setValue(userModel.garages);
     }
   }
   
   public addUserForm = new FormGroup({
-    lastName : new FormControl(this.userModel.lastName, [Validators.required, 
+    lastName : new FormControl('', [Validators.required, 
                                       Validators.minLength(2),
                                       Validators.maxLength(255)
                                     ]),
@@ -76,7 +83,7 @@ export class UserFormComponent implements OnInit {
 
   constructor(private httpClient : HttpClient,
     private router : Router,
-    private formBuilder : FormBuilder) { }
+    private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     console.log(this.user);
@@ -113,20 +120,20 @@ export class UserFormComponent implements OnInit {
           );
           
       } else if (postOrPatch === 'Modifier') { 
-        console.log('méthode Patch');
-        
-        // this.httpClient.past<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users',
-        //   this.addUser).subscribe(
-        //     (response) => {console.log(response);
-              
-        //       const id = response.id;
-        //       console.log(id);
-              
-        //       this.router.navigate(['users/user/'+id])
-        //     },
-        //     (error) => {console.log('erreur de la requète : '+ error);
-        //     });
+        const id  = this.activatedRoute.params.subscribe(
+          (data)=> {
+            console.log('méthode Patch',  data.id);
+            this.httpClient.put<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users/'+data.id,
+              this.addUser).subscribe(
+                (response) => {console.log(response);
+                  this.router.navigate(['users/user/'+data.id])
+                },
+                (error) => {console.log('erreur de la requète : ', error);
+                });
+          }
+        );
       }
+        
     }
 
 }
