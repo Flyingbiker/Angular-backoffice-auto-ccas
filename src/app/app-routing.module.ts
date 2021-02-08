@@ -1,3 +1,4 @@
+import { AddGarageComponent } from './views/garages/add-garage/add-garage.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AnnonceDetailComponent } from './views/annonces/annonce-detail/annonce-detail.component';
@@ -22,11 +23,13 @@ const routes: Routes = [
   {path:"users/edit/:id", component : EditUserComponent},
   {path:"users/add", component : AddUserComponent},
   {path:"garages", component : GaragesComponent},
-  {path:"garages/edit/id", component : EditGarageComponent},
+  {path:"garages/edit/:id", component : EditGarageComponent},
   {path:"garages/garage/id", component : GarageDetailComponent},
+  {path:"garages/add", component : AddGarageComponent},
   {path:"annonces", component : AnnoncesComponent},
   {path:"annonces/edit/id", component : EditAnnonceComponent},
   {path:"annonces/annonce/id", component : AnnonceDetailComponent},
+  {path:"annonces/add", component : AnnonceDetailComponent},
   {path:"", component : LoginComponent},
   {path:'404-page', component : PageFourOFourComponent},
   {path:"**", redirectTo : '404-page'},  

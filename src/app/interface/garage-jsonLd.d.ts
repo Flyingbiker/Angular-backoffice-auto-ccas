@@ -4,7 +4,7 @@ export interface GarageJsonLd {
     '@type' : string;
     id : number;
     name : string;
-    street? :string;
+    street :string;
     streetComplement? :string;
     postalCode? :string;
     city? :string;

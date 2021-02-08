@@ -1,0 +1,81 @@
+<form *ngIf="garage" #garageForm="ngForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text"
+             class="form-control"
+             id="name"
+             aria-describedby="nameHelp"
+             [(ngModel)]="garage.name"
+             name="name"
+      >
+      <small id="nameHelp" class="form-text text-muted">Enter here the last name of the garage.</small>
+      <small *ngFor="let err of retrieveErrors('name')" class="form-text text-danger">{{ err }}</small>
+    </div>
+  
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input type="text"
+             class="form-control"
+             id="street"
+             aria-describedby="streetHelp"
+             [(ngModel)]="garage.street"
+             name="street"
+      >
+      <small id="streetHelp" class="form-text text-muted">Enter here the street of the garage.</small>
+      <small *ngFor="let err of retrieveErrors('street')" class="form-text text-danger">{{ err }}</small>
+    </div>
+  
+    <div class="form-group">
+      <label for="streetComplement">Street Complement</label>
+      <input type="streetComplement"
+             class="form-control"
+             id="streetComplement"
+             aria-describedby="streetComplementHelp"
+             [(ngModel)]="garage.streetComplement"
+             name="streetComplement"
+      >
+      <small id="streetComplementHelp" class="form-text text-muted">Enter here the streetComplement of the garage.</small>
+      <small *ngFor="let err of retrieveErrors('streetComplement')" class="form-text text-danger">{{ err }}</small>
+    </div>
+  
+    <div class="form-group">
+      <label for="postalCode">postalCode</label>
+      <input type="postalCode"
+             class="form-control"
+             id="postalCode"
+             aria-describedby="postalCodeHelp"
+             [(ngModel)]="garage.postalCode"
+             name="postalCode"
+      >
+      <small id="postalCodeHelp" class="form-text text-muted">Enter here the postalCode of the garage.</small>
+      <small *ngFor="let err of retrieveErrors('postalCode')" class="form-text text-danger">{{ err }}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="city">city</label>
+      <input type="city"
+             class="form-control"
+             id="city"
+             aria-describedby="cityHelp"
+             [(ngModel)]="garage.city"
+             name="city"
+      >
+      <small id="cityHelp" class="form-text text-muted">Enter here the city of the garage.</small>
+      <small *ngFor="let err of retrieveErrors('city')" class="form-text text-danger">{{ err }}</small>
+    </div>
+    
+    <div class="form-group">
+      <label for="owner">owner</label>
+      <input type="owner"
+             class="form-control"
+             id="owner"
+             aria-describedby="ownerHelp"
+             [(ngModel)]="garage.owner"
+             name="owner"
+      >
+      <small id="ownerHelp" class="form-text text-muted">Enter here the owner of the garage.</small>
+      <small *ngFor="let err of retrieveErrors('owner')" class="form-text text-danger">{{ err }}</small>
+    </div>
+  
+    <button type="submit" class="btn btn-success">Save the garage</button>
+  </form>

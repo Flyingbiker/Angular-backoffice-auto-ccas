@@ -25,6 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './forms/user-form/user-form.component';
+import { AddGarageComponent } from './views/garages/add-garage/add-garage.component';
+import { GarageFormComponent } from './forms/garage-form/garage-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { UserFormComponent } from './forms/user-form/user-form.component';
     LoginComponent,
     PageFourOFourComponent,
     HeaderComponent,
-    UserFormComponent
+    UserFormComponent,
+    AddGarageComponent,
+    GarageFormComponent
   ],
   imports: [
     BrowserModule,
