@@ -22,4 +22,15 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  //faire commencer le nom de nos tests par should
+  it(`test créé par Aymeric pour le logo non vide`, ()=>{
+    //testBed est notre environneemnt de test (simule le navigateur)
+    const fixture = TestBed.createComponent(HeaderComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement; //document.querySelector('your component)
+    
+    const $img = compiled.querySelector('img');
+    expect($img).toBeTruthy();
+    });
 });

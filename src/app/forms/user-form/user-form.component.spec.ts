@@ -22,4 +22,11 @@ describe('UserFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should retrieve valid array from ViolationList', ()=>{
+    //1- vérifier que si il n'y a pas d'erreur, le tableau est vide
+    // component.violationList = null;
+    // const errorMessages = component.re('first?');
+    // errorMessage.
+  });
 });
