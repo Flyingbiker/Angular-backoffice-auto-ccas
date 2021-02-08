@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container">
     <h2 class="text-white font-Permanent-Marker">Vue détaillée du Professionnel</h2>
     <div class="card text-center">
         <p>id : {{userDetail?.id}} </p>
@@ -14,12 +14,12 @@
             </ul>
         </div>
         <div class="btn-group">
-            <button type="button" class="btn btn-warning" [routerLink]="['/users/edit',indexUser]">Modifier</button>
-            <button class="btn btn-danger" (click)="deleteUser(indexUser)">Supprimer</button>
+            <button type="button" class="btn btn-warning col-md-6" [routerLink]="['/users/edit',indexUser]">Modifier</button>
+            <button class="btn btn-danger col-md-6" (click)="deleteUser(indexUser)">Supprimer</button>
         </div>
         <div class="btn-group">
-            <button type="button" class="btn btn-primary">Retour vers les professionnels</button>
-            <button class="btn btn-primary" routerLink="/dashboard">Retour au dashboard</button>
+            <button type="button" class="btn btn-primary col-md-6" routerLink="/users">Retour vers les professionnels</button>
+            <button class="btn btn-primary col-md-6" routerLink="/dashboard">Retour au dashboard</button>
         </div>
     </div>
 </div>
