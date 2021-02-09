@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ConstraintViolationList } from 'src/app/interface/ConstraintViolationList';
 import { Garage } from 'src/app/interface/garage';
+
 @Component({
   selector: 'app-add-garage',
   templateUrl: './add-garage.component.html',
@@ -39,11 +40,10 @@ export class AddGarageComponent implements OnInit {
           if (err.status === 422){
             this.violationList = err.error;
           } else {
-            alert(err.status + 'une erreur est arrivé lors de la création');
+            alert(err.status + ' - une erreur est arrivé lors de la création');
           }
         }
       });
-
   }
 
 }
