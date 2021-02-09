@@ -1,2 +1,19 @@
-<h2>Vue détaillée du garage : 1</h2>
-
+<div class="container">
+    <h2 class="text-white font-Permanent-Marker">Vue détaillée du garage</h2>
+    <div  class="card text-center">        
+        <p>Nom : {{garageDetail?.name}} </p>
+        <p>Rue : {{garageDetail?.street}} </p>
+        <p>Complément de rue : {{garageDetail?.streetComplement}} </p>
+        <p>Code postal : {{garageDetail?.postalCode}} </p>
+        <p>Ville : {{garageDetail?.city}} </p>
+        <p>Propriétaire : {{garageDetail?.owner}} </p>        
+        <div class="btn-group">
+            <button type="button" class="btn btn-warning col-md-6" [routerLink]="['/garages/edit',indexGarage]">Modifier</button>
+            <button class="btn btn-danger col-md-6" (click)="deleteGarage(indexGarage)">Supprimer</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary col-md-6" routerLink="/garages">Retour vers les garages</button>
+            <button class="btn btn-primary col-md-6" routerLink="/dashboard">Retour au dashboard</button>
+        </div>
+    </div>
+</div>

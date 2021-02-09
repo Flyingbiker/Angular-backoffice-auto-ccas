@@ -39,7 +39,7 @@
                                         </td>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let garage of garageArray">
+                                <tbody *ngFor="let garage of garageArray" (click)="goToDetailGarage(garage.id)" >
                                     <tr>
                                         <td class="pl-4">{{garage.id}}</td>
                                         <td>

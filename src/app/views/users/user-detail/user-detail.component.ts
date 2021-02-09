@@ -1,5 +1,4 @@
 import { UserService } from 'src/app/services/user.service';
-import { Usercollection } from 'src/app/interface/user-collection';
 import { UserJsonLd } from 'src/app/interface/user-jsonLd';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';

@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { GarageJsonLd } from 'src/app/interface/garage-jsonLd';
 import { Component, OnInit } from '@angular/core';
+import { Garage } from 'src/app/interface/garage';
 
 @Component({
   selector: 'app-garage-detail',
@@ -7,9 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GarageDetailComponent implements OnInit {
 
-  constructor() { }
+  public indexGarage = 0;
+  public garageDetail : GarageJsonLd|null = null;
+
+  constructor(private route : ActivatedRoute,
+              private httpClient : HttpClient
+              ) { }
 
   ngOnInit(): void {
+    this.indexGarage = this.route.snapshot.params['id'];
+    this.loadGarageDetails(this.indexGarage);
+  }
+
+  public loadGarageDetails(index : number): void {
+    this.httpClient.get<GarageJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages/'+index)
+      .subscribe(
+        (response) => {
+          this.garageDetail = response;
+        },
+        (err) => { console.error(err);
+        }
+      );
+  }
+
+  public deleteGarage(user : number): void {
+    
   }
 
 }

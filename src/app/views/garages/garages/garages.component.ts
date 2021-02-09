@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { GarageCollectionFilter } from './../../../interface/garage-filters.d';
 import { GarageCollection } from './../../../interface/garage-collection.d';
 import { GarageJsonLd } from './../../../interface/garage-jsonLd.d';
@@ -26,7 +27,8 @@ export class GaragesComponent implements OnInit {
     city : ''
   }
 
-  constructor( private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.loadPage(this.actualPage);
@@ -119,8 +121,11 @@ export class GaragesComponent implements OnInit {
       );    
   }
 
-  public deleteGarage(index:number): void {
-    
+  public goToDetailGarage(index:number = 0) : void {
+    this.router.navigate(['garages/garage/'+index]);
+  }
+
+  public deleteGarage(index:number): void {    
     if (confirm('Etes-vous sur de vouloir supprimer ce garage ?')) {
       this.httpClient.delete<GarageJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages/'+index)
         .subscribe(
@@ -130,12 +135,9 @@ export class GaragesComponent implements OnInit {
           },
           (error)=> {
             console.error('erreur lors de la suppression', error);
-          }
-          
+          }          
         );
-
     }
-
   }
 
 }
