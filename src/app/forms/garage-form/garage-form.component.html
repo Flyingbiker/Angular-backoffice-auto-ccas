@@ -3,7 +3,7 @@
       <label for="name">Nom du garage <span>*</span></label>
       <input type="text"
              class="form-control"
-             id="name"
+             id="name" required minlength="2" maxlength="255"
              aria-describedby="nameHelp"
              [(ngModel)]="garage.name"
              name="name"
@@ -13,10 +13,10 @@
     </div>
   
     <div class="form-group">
-      <label for="street">Nom de rue <span>*</span></label>
+      <label for="street">Nom de rue</label>
       <input type="text"
              class="form-control"
-             id="street"
+             id="street" minlength="2" maxlength="255"
              aria-describedby="streetHelp"
              [(ngModel)]="garage.street"
              name="street"
@@ -26,10 +26,10 @@
     </div>
   
     <div class="form-group">
-      <label for="streetComplement">Complément de rue <span>*</span></label>
+      <label for="streetComplement">Complément de rue</label>
       <input type="streetComplement"
              class="form-control"
-             id="streetComplement"
+             id="streetComplement" minlength="2" maxlength="255"
              aria-describedby="streetComplementHelp"
              [(ngModel)]="garage.streetComplement"
              name="streetComplement"
@@ -39,10 +39,10 @@
     </div>
   
     <div class="form-group">
-      <label for="postalCode">Code postal <span>*</span></label>
+      <label for="postalCode">Code postal</label>
       <input type="postalCode"
              class="form-control"
-             id="postalCode"
+             id="postalCode" minlength="2" maxlength="10"
              aria-describedby="postalCodeHelp"
              [(ngModel)]="garage.postalCode"
              name="postalCode"
@@ -52,10 +52,10 @@
     </div>
 
     <div class="form-group">
-      <label for="city">Ville <span>*</span></label>
+      <label for="city">Ville</label>
       <input type="city"
              class="form-control"
-             id="city"
+             id="city" minlength="2" maxlength="255"
              aria-describedby="cityHelp"
              [(ngModel)]="garage.city"
              name="city"
@@ -68,7 +68,7 @@
       <label for="owner">Propriétaire <span>*</span></label>
       <input type="owner"
              class="form-control"
-             id="owner"
+             id="owner" required  minlength="2" maxlength="255"
              aria-describedby="ownerHelp"
              [(ngModel)]="garage.owner"
              name="owner"
@@ -77,8 +77,10 @@
       <small *ngFor="let err of retrieveErrors('owner')" class="form-text text-danger">{{ err }}</small>
     </div>
   
-    <button type="submit" class="btn btn-success" 
-      [disabled]="garageForm.valid"
-      >Sauvegarder le garage
+    <button type="submit" class="btn btn-success" >Sauvegarder le garage
+    </button>
+    <button type="submit" class="btn btn-info" 
+      [disabled]="garageForm.invalid"
+      >Sauvegarde avec désactivation
     </button>
   </form>

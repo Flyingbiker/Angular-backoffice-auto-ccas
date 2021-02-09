@@ -1,19 +1,47 @@
 <div class="container">
     <h2 class="text-center text-white">Dashboard</h2>
-    <div class="row text-white">
-        <h2>Statistiques sur les professionnels</h2>
-        <div class="col">
+    <div class="row">
+        <div class="card col-md-4">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Statistiques sur les professionnels</h5>
+              <p class="card-text">Nombre total de professionnel inscrit : <span>{{totalPros}}</span></p>
+              <p class="card-text">Liste des 5 derniers professionnels inscrits :</p>
+              <ul>
+                  <li *ngFor="let user of arrayLastFivePros"> Last Name{{user.lastName}}</li>
+              </ul>
+              <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Voir les professionnels</a>
+              </div>
+            </div>
+        </div>
+        <div class="card col-md-4">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Statistiques sur les garages</h5>
+              <p class="card-text">Nombre total de professionnel inscrit : <span> {{totalGarages}}</span></p>
+              <p class="card-text">Liste des 5 derniers professionnels inscrits :</p>
+              <ul>
+                  <li></li>
+              </ul>
+              <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Voir les garages</a>
+              </div>              
+            </div>
+        </div>
+        <div class="card col-md-4">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Statistiques sur les annonces</h5>
+              <p class="card-text">Nombre total de professionnel inscrit : <span> {{totalAnnonces}}</span></p>
+              <p class="card-text">Liste des 5 derniers professionnels inscrits :</p>
+              <ul>
+                  <li></li>
+              </ul>
+              <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Voir les annonces</a>
+              </div>  
+            </div>
         </div>
     </div>
-    <div class="row text-white">
-        <h2>Statistiques sur les garages</h2>
-        <div class="col">
-        </div>
-    </div>
-    <div class="row text-white">
-        <h2>Statistiques sur les annonces</h2>
-        <div class="col">
-        </div>
-    </div>
-
 </div>
