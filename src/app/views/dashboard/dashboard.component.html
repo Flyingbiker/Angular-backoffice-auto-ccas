@@ -26,10 +26,13 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">Statistiques sur les garages</h5>
-                <p class="card-text">Nombre total de professionnel inscrit : <span> {{totalGarages}}</span></p>
-                <p class="card-text">Liste des 5 derniers professionnels inscrits :</p>
+                <p class="card-text">Nombre total de garages inscrit : <span> {{totalGarages}}</span></p>
+                <p class="card-text">Liste des {{lastGaragesNumber}} derniers professionnels inscrits :</p>
                 <ol>
-                    <li></li>
+                    <li *ngFor="let garage of arrayLastFiveGarages" class="link"
+                        [routerLink]="['/garages/garage/',garage.id]"> 
+                        {{ garage.name}} - {{ garage.city}}
+                    </li>
                 </ol>
                 <div class="card-footer text-center">
                     <a class="btn btn-primary" routerLink='/garages'>Voir les garages</a>
@@ -42,10 +45,13 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">Statistiques sur les annonces</h5>
-                <p class="card-text">Nombre total de professionnel inscrit : <span> {{totalAnnonces}}</span></p>
-                <p class="card-text">Liste des 5 derniers professionnels inscrits :</p>
+                <p class="card-text">Nombre total d'annonces en ligne : <span> {{totalAnnonces}}</span></p>
+                <p class="card-text">Liste des {{lastAnnoncesNumber}} dernières annonces mise en ligne :</p>
                 <ol>
-                    <li></li>
+                    <li *ngFor="let annonce of arrayLastFiveAnnonces" class="link"
+                        [routerLink]="['/annonces/annonce/',annonce.id]"> 
+                        {{ annonce.brand}} - {{ annonce.model}} - ref: {{ annonce.id }} - {{ annonce.km }}km
+                    </li>
                 </ol>
                 <div class="card-footer text-center">
                     <a class="btn btn-primary" routerLink='/annonces'>Voir les annonces</a>
