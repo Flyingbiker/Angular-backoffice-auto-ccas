@@ -22,12 +22,11 @@ export class UserService {
   }
 
   public deletUser(id : number):void {
-    if (confirm("Etes-vous sur de vouloir supprimer ce professionnel ?")) {
-      console.log('suppression confirmée');
+    if (confirm("Etes-vous sur de vouloir supprimer ce professionnel ?")) {      
       this.httpClient.delete('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users/'+id)
         .subscribe(
           (response) => {            
-            alert('suppression confirmé')
+            alert('suppression confirmé');
             this.router.navigate(['/users']);            
           },
           (error) => {console.error('erreur sur la requête de suppression' + error);
