@@ -18,15 +18,11 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      (params) =>{ 
-        console.log('params : ' , params);
-        console.log('params : ' , params.id);
+      (params) =>{         
         this.httpClient.get<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users/'+params.id)
           .subscribe( {
             next: (data : UserJsonLd)=> { 
-              this.userToModify = data 
-              console.log(this.userToModify);
-              
+              this.userToModify = data ;                            
             },
             error : (err : HttpErrorResponse)=> { console.error('Erreur de requête + ', err); }
           }

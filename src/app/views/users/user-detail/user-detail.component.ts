@@ -27,9 +27,7 @@ export class UserDetailComponent implements OnInit {
     this.httpClient.get<UserJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/users/'+index)
       .subscribe(
         (response)=>{
-          this.userDetail = response;
-          console.log(this.userDetail);
-          
+          this.userDetail = response;          
          },
         (error)=> {
           console.log("le message d'erreur : "+ error);          
