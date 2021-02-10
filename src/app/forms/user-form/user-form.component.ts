@@ -86,7 +86,7 @@ export class UserFormComponent implements OnInit {
     private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.user);
+    
   
   }
 

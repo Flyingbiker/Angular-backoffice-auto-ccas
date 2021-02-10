@@ -2,7 +2,8 @@
 
   <div class="form-group">
     <label for="lastName">Nom <span>*</span></label>
-    <input type="text" class="form-control" formControlName="lastName" required id="lastName">
+    <input type="text" class="form-control" formControlName="lastName" 
+      required id="lastName">
     <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="alert alert-danger">
       <div *ngIf="lastName?.errors?.required">lastName is required </div>
       <div *ngIf="lastName?.errors?.minlength">

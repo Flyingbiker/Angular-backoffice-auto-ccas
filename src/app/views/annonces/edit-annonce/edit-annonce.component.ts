@@ -19,7 +19,7 @@ export class EditAnnonceComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       (params) => {
-        this.httpClient.get<AnnonceJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/listings/'+params)
+        this.httpClient.get<AnnonceJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/listings/'+params.id)
           .subscribe( {
             next: (data : AnnonceJsonLd) => {
               this.annonceToModifiy = data;
