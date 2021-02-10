@@ -54,7 +54,11 @@ export class AnnoncesComponent implements OnInit {
           this.annoncesArray = collection['hydra:member'];
         }
       );
+    }
   }
-}
+
+  public goToDetailAnnonce(index : number = 0){
+    this.router.navigate(['/annonces/annonce/'+index]);
+  }
   
 }

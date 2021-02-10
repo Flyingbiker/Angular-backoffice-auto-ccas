@@ -46,7 +46,7 @@
                                         </td>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let annonce of annoncesArray; let i=index;" >
+                                <tbody *ngFor="let annonce of annoncesArray; let i=index;" (click)="goToDetailAnnonce(annonce.id)">
                                     <tr >
                                         <td class="pl-4">{{annonce.id}}</td>
                                         <td>
