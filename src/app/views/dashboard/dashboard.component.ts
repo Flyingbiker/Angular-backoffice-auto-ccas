@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
                 } else {
                   len = arrayTemp.length-5;
                 }
-                for (let i=arrayTemp.length-1; i > len; i--){
+                for (let i=arrayTemp.length-1; i >= len; i--){
                   this.arrayLastFiveGarages.push(arrayTemp[i]);
                 } 
                 this.lastGaragesNumber = this.arrayLastFiveGarages.length;
@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
                 } else {
                   len = arrayTemp.length-5;
                 }
-                for (let i=arrayTemp.length-1; i > len; i--){
+                for (let i=arrayTemp.length-1; i >= len; i--){
                   this.arrayLastFiveAnnonces.push(arrayTemp[i]);
                 } 
                 this.lastAnnoncesNumber = this.arrayLastFiveAnnonces.length;
