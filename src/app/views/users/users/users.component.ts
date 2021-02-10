@@ -115,7 +115,7 @@ export class UsersComponent implements OnInit {
         (response)=> {
           this.usersArray = response['hydra:member'];
           
-
+          //fonctions pour l'affichage des pages en bas du tableau
           if (response['hydra:view']['hydra:next'] === undefined){
             this.nextLink = null;
           } else {
@@ -144,6 +144,9 @@ export class UsersComponent implements OnInit {
               this.lastPage = parseInt(matches[1]);
             }
 
+
+            //fonction pour afficher le nom des garages
+
           }
         }
       );
@@ -159,4 +162,10 @@ export class UsersComponent implements OnInit {
       this.userService.deletUser(index);
     }
   }
+
+  public goToGarage(garage : string) : void {
+    this.userService.goToGarage(garage);    
+  }
+
+  
 }

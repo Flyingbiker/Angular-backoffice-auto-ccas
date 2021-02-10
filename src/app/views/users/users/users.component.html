@@ -61,7 +61,8 @@
                                             <span class="text-muted">{{user.siret}}</span>
                                         </td>
                                         <td>
-                                            <span class="text-muted" *ngFor="let garage of user.garages">
+                                            <span class="text-muted" *ngFor="let garage of user.garages"
+                                                (click)="goToGarage(garage)">
                                                 <p>{{garage}}</p>
                                             </span>
                                         </td>

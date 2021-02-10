@@ -39,5 +39,9 @@ export class UserDetailComponent implements OnInit {
   public deleteUser(user : number): void {
     this.userService.deletUser(user);
   }
-    
+  
+  public goToGarage(garage : string) : void {
+    this.userService.goToGarage(garage);
+  }
+  
 }

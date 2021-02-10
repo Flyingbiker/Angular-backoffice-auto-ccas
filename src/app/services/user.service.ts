@@ -35,4 +35,13 @@ export class UserService {
     }
   }
 
+  public goToGarage(garage : string) : void {
+    const regex = /api\/garages\/(.+)/;
+    const routeCorrected = garage.match(regex);
+    if (routeCorrected !== null){
+      this.router.navigate(['garages/garage/'+ routeCorrected[1]]);
+    }    
+  }
+
+  
 }

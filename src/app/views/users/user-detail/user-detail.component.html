@@ -10,7 +10,8 @@
         <div>
             <p>garages :</p>     
             <ul *ngFor="let garage of userDetail?.garages">
-                <li class="link" routerLink="'/garages/'+garage">{{garage}}</li>        
+                <li class="link" routerLink="'/garages/'+garage"
+                    (click)="goToGarage(garage)">{{garage}}</li>        
             </ul>
         </div>
         <div class="btn-group">

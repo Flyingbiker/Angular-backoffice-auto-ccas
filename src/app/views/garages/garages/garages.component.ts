@@ -140,4 +140,12 @@ export class GaragesComponent implements OnInit {
     }
   }
 
+  public goToDetail(user : string) : void {
+    const regex = /api\/users\/(.+)/;
+    const routeCorrected = user.match(regex);
+    if (routeCorrected !== null){
+      this.router.navigate(['users/user/'+routeCorrected[1]]);
+    }
+  }
+
 }
