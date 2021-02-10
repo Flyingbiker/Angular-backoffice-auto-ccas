@@ -78,8 +78,7 @@ export class DashboardComponent implements OnInit {
             .subscribe(
               (response)=> {
                 let arrayTemp = response['hydra:member'];
-                console.log(arrayTemp);
-                
+                               
                 let len = 0;
                 if (arrayTemp.length < 5) {
                   len = arrayTemp.length;
