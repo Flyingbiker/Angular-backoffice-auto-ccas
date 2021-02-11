@@ -29,6 +29,7 @@ import { UserFormComponent } from './forms/user-form/user-form.component';
 import { AddGarageComponent } from './views/garages/add-garage/add-garage.component';
 import { GarageFormComponent } from './forms/garage-form/garage-form.component';
 import { AnnonceFormComponent } from './forms/annonce-form/annonce-form.component';
+import { AddAnnonceComponent } from './views/annonces/add-annonce/add-annonce.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AnnonceFormComponent } from './forms/annonce-form/annonce-form.componen
     UserFormComponent,
     AddGarageComponent,
     GarageFormComponent,
-    AnnonceFormComponent
+    AnnonceFormComponent,
+    AddAnnonceComponent
   ],
   imports: [
     BrowserModule,

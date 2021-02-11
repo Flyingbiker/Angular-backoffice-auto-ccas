@@ -114,10 +114,13 @@ export class AnnonceFormComponent implements OnInit {
       this.addAnnonce).subscribe(
         (response) => {
           
-          this.router.navigate(['annnonces/annonce/'+response.id])
+          console.log(response);
+          
+          alert('annonce créé');
+          this.router.navigate(['annnonces/annonce/'+response.id]);
 
         },
-        (error) => {console.log('erreur de la requète : '+ error);
+        (error) => {console.log('erreur de la requète d\'ajout : '+ error);
         }
       );
       
@@ -127,12 +130,12 @@ export class AnnonceFormComponent implements OnInit {
           this.httpClient.put<AnnonceJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/listings/'+data.id,
           this.addAnnonce).subscribe(
             () => {
-              console.log('annnonces/annonce/'+data.id);
+              console.log('annnonces/annonce/'+data.id, data);
               
               this.router.navigate(['annonces/annonce/'+data.id]);
 
             },
-            (error) => {console.log('erreur de la requète : ', error);
+            (error) => {console.log('erreur de la requète de modification : ', error);
             });          
         }
       )

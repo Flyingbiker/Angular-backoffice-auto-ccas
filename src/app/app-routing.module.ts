@@ -1,3 +1,4 @@
+import { AddAnnonceComponent } from './views/annonces/add-annonce/add-annonce.component';
 import { CanActivateGuard } from './services/auth-guard.service';
 import { AddGarageComponent } from './views/garages/add-garage/add-garage.component';
 import { NgModule } from '@angular/core';
@@ -30,11 +31,11 @@ const routes: Routes = [
   // {path:"annonces", canActivate: [CanActivateGuard], component : AnnoncesComponent},
   // {path:"annonces/edit/:id", canActivate: [CanActivateGuard], component : EditAnnonceComponent},
   // {path:"annonces/annonce/:id", canActivate: [CanActivateGuard], component : AnnonceDetailComponent},
-  // {path:"annonces/add", canActivate: [CanActivateGuard], component : AnnonceDetailComponent},
+  // {path:"annonces/add", canActivate: [CanActivateGuard], component : AddAnnonceComponent},
   {path:"annonces",  component : AnnoncesComponent},
   {path:"annonces/edit/:id",  component : EditAnnonceComponent},
   {path:"annonces/annonce/:id",  component : AnnonceDetailComponent},
-  {path:"annonces/add",  component : AnnonceDetailComponent},
+  {path:"annonces/add",  component : AddAnnonceComponent},
   {path:"", component : LoginComponent},
   {path:'404-page', component : PageFourOFourComponent},
   {path:"**", redirectTo : '404-page'},  
