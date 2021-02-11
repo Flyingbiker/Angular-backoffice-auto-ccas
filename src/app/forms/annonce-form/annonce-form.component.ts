@@ -12,7 +12,25 @@ export class AnnonceFormComponent implements OnInit {
 
   @Input() btnName : string = '';
   
-  @Input() annonce : Annonce|null = null;
+  public annonceModel = {
+    title : this.annonce?.title,
+    description:this.annonce?.description,
+    releaseYear:this.annonce?.releaseYear,
+    km:this.annonce?.km,
+    price:this.annonce?.price,
+    brand:this.annonce?.brand,
+    model:this.annonce?.model,
+    fuel:this.annonce?.fuel,
+    garage:this.annonce?.garage,
+  }
+
+  @Input() 
+  set annonce(annonceModel: Annonce|null) {
+    if (annonceModel?.title) {
+      this.editAnnonceForm.get('title')?.setValue(annonceModel.title);
+    }
+    //get à poursuivre
+  } ;
 
   public editAnnonceForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -29,17 +47,7 @@ export class AnnonceFormComponent implements OnInit {
   constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
-    // this.updateAnnonce();
-    // console.log(this.annonce);
     
-  }
-
-  public updateAnnonce(): void{
-    if (this.annonce !== null ) {
-      this.editAnnonceForm.patchValue(this.annonce);
-      console.log(this.editAnnonceForm);
-      
-    }
   }
 
   public onSubmit(btnName : string){

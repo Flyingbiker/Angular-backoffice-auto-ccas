@@ -1,3 +1,4 @@
+import { CanActivateGuard } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -61,7 +62,8 @@ import { AnnonceFormComponent } from './forms/annonce-form/annonce-form.componen
   ],
   providers: [
     UserService,
-    AuthService
+    AuthService,
+    CanActivateGuard
   ],
   bootstrap: [AppComponent]
 })

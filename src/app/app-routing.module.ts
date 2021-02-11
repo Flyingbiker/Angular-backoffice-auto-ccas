@@ -1,3 +1,4 @@
+import { CanActivateGuard } from './services/auth-guard.service';
 import { AddGarageComponent } from './views/garages/add-garage/add-garage.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,19 +18,19 @@ import { UsersComponent } from './views/users/users/users.component';
 
 
 const routes: Routes = [
-  {path:"dashboard", component : DashboardComponent},
-  {path:"users", component : UsersComponent},
-  {path:"users/user/:id", component : UserDetailComponent},
-  {path:"users/edit/:id", component : EditUserComponent},
-  {path:"users/add", component : AddUserComponent},
-  {path:"garages", component : GaragesComponent},
-  {path:"garages/edit/:id", component : EditGarageComponent},
-  {path:"garages/garage/:id", component : GarageDetailComponent},
-  {path:"garages/add", component : AddGarageComponent},
-  {path:"annonces", component : AnnoncesComponent},
-  {path:"annonces/edit/:id", component : EditAnnonceComponent},
-  {path:"annonces/annonce/:id", component : AnnonceDetailComponent},
-  {path:"annonces/add", component : AnnonceDetailComponent},
+  {path:"dashboard", canActivate: [CanActivateGuard], component : DashboardComponent},
+  {path:"users", canActivate: [CanActivateGuard], component : UsersComponent},
+  {path:"users/user/:id", canActivate: [CanActivateGuard], component : UserDetailComponent},
+  {path:"users/edit/:id", canActivate: [CanActivateGuard], component : EditUserComponent},
+  {path:"users/add", canActivate: [CanActivateGuard], component : AddUserComponent},
+  {path:"garages", canActivate: [CanActivateGuard], component : GaragesComponent},
+  {path:"garages/edit/:id", canActivate: [CanActivateGuard], component : EditGarageComponent},
+  {path:"garages/garage/:id", canActivate: [CanActivateGuard], component : GarageDetailComponent},
+  {path:"garages/add", canActivate: [CanActivateGuard], component : AddGarageComponent},
+  {path:"annonces", canActivate: [CanActivateGuard], component : AnnoncesComponent},
+  {path:"annonces/edit/:id", canActivate: [CanActivateGuard], component : EditAnnonceComponent},
+  {path:"annonces/annonce/:id", canActivate: [CanActivateGuard], component : AnnonceDetailComponent},
+  {path:"annonces/add", canActivate: [CanActivateGuard], component : AnnonceDetailComponent},
   {path:"", component : LoginComponent},
   {path:'404-page', component : PageFourOFourComponent},
   {path:"**", redirectTo : '404-page'},  
