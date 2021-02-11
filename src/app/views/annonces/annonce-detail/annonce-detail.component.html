@@ -5,22 +5,21 @@
         <p>Titre : {{annonceDetail?.title}} </p> 
         <p>description : {{annonceDetail?.description}} </p>  
         <p>Année : {{annonceDetail?.releaseYear}} </p>   
-        <p>Kilométrage : {{annonceDetail?.km}} </p>   
-        <p>Prix : {{annonceDetail?.price}} </p>   
+        <p>Kilométrage : {{annonceDetail?.km | number }} km</p>            
+        <p>Prix : {{annonceDetail?.price | number}}€ </p>   
         <p>Marque : {{annonceDetail?.brand}} </p>   
         <p>Modèle : {{annonceDetail?.model}} </p>   
         <p>Carburant : {{annonceDetail?.fuel}} </p>   
-        <p>Prix : {{annonceDetail?.garage}} </p>   
-        <div>
-            <p>garages : </p>     
-            
+        <div class="cursor">
+            <p>Garages : {{annonceDetail?.garage}} </p>   
         </div>
+        
         <div class="btn-group">
             <button type="button" class="btn btn-warning col-md-6" [routerLink]="['/annonces/edit',indexAnnonce]">Modifier</button>
             <button class="btn btn-danger col-md-6" (click)="deleteAnnonce(indexAnnonce)">Supprimer</button>
         </div>
         <div class="btn-group">
-            <button type="button" class="btn btn-primary col-md-6" routerLink="/users">Retour vers les professionnels</button>
+            <button type="button" class="btn btn-primary col-md-6" routerLink="/annonces">Retour vers les annonces</button>
             <button class="btn btn-primary col-md-6" routerLink="/dashboard">Retour au dashboard</button>
         </div>
     </div>

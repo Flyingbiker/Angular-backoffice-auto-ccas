@@ -31,8 +31,8 @@ export class UserFormComponent implements OnInit {
     lastName : this.user?.lastName,
     firstName : this.user?.firstName ,
     email : this.user?.email ,
-    phone : (this.user?.phone !== null ? this.user?.phone : ''),
-    siret : (this.user?.siret !== null ? this.user?.siret : ''),
+    phone : (this.user?.phone !== null ? this.user?.phone : null),
+    siret : (this.user?.siret !== null ? this.user?.siret : null),
     garages : this.user?.garages
   }
   //setter pour récupérer les informations à la création du composant
@@ -85,10 +85,7 @@ export class UserFormComponent implements OnInit {
     private router : Router,
     private activatedRoute:ActivatedRoute) { }
 
-  ngOnInit(): void {
-    
-  
-  }
+  ngOnInit(): void {  }
 
   public onSubmit(postOrPatch : string) : Observable<User> | void { 
     const user = this.addUserForm.value as User;
