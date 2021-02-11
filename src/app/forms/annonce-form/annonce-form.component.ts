@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AnnonceJsonLd } from 'src/app/interface/annonces-jsonLd';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Annonce } from 'src/app/interface/annonce';
 import { variable } from '@angular/compiler/src/output/output_ast';
 import { Observable } from 'rxjs';
@@ -78,7 +78,7 @@ export class AnnonceFormComponent implements OnInit {
     title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
     description: ['', [Validators.required, Validators.minLength(20)]],
     releaseYear: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-    km: ['', Validators.required],
+    km: [null, Validators.required],
     price: ['', Validators.required],
     brand: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
     model: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
@@ -95,6 +95,7 @@ export class AnnonceFormComponent implements OnInit {
     
   }
 
+
   public onSubmit(postOrPatch : string) :  Observable<Annonce>|void { 
     const annonce = this.editAnnonceForm.value as Annonce;
     this.addAnnonce = {
@@ -107,17 +108,19 @@ export class AnnonceFormComponent implements OnInit {
         model :  annonce.model,
         fuel :  annonce.fuel,
         garage :  annonce.garage
-    }
-
+    }  
+    
     if (postOrPatch === 'Ajouter'){
+      console.log(this.addAnnonce);
+      
       this.httpClient.post<AnnonceJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/listings', 
       this.addAnnonce).subscribe(
         (response) => {
           
-          console.log(response);
+          const id = response.id;            
           
           alert('annonce créé');
-          this.router.navigate(['annnonces/annonce/'+response.id]);
+          this.router.navigate(['annonces/annonce/'+id]);
 
         },
         (error) => {console.log('erreur de la requète d\'ajout : '+ error);
@@ -130,7 +133,7 @@ export class AnnonceFormComponent implements OnInit {
           this.httpClient.put<AnnonceJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/listings/'+data.id,
           this.addAnnonce).subscribe(
             () => {
-              console.log('annnonces/annonce/'+data.id, data);
+              console.log('annonces/annonce/'+data.id, data);
               
               this.router.navigate(['annonces/annonce/'+data.id]);
 
