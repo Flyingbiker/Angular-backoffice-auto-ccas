@@ -1,3 +1,4 @@
+import { AnnoncesCollection } from 'src/app/interface/annonces-collection';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AnnoncesService } from './../../../services/annonces.service';
@@ -5,6 +6,7 @@ import { AnnoncesService } from './../../../services/annonces.service';
 import { Component, OnInit } from '@angular/core';
 import { AnnonceCollectionFilter } from 'src/app/interface/annonce-filter';
 import { AnnonceJsonLd } from 'src/app/interface/annonces-jsonLd';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class AnnoncesComponent implements OnInit {
   public annonceSubscription : Subscription|null = null;
 
   public filters : AnnonceCollectionFilter = {
-    id : 0,
+    id : '',
     title : '',
     description : '',
     fuel : '' ,
@@ -30,7 +32,8 @@ export class AnnoncesComponent implements OnInit {
 
 
   constructor(private annoncesService : AnnoncesService,
-              private router : Router) { }
+              private router : Router,
+              private httpClient : HttpClient) { }
 
   ngOnInit(): void {
      this.annoncesService.loadPage('/api/listings?page=1').subscribe(
@@ -41,8 +44,26 @@ export class AnnoncesComponent implements OnInit {
     );
   }
   
-  public applyFilters():void {
+  public applyFilters(page : number = 1):void {
+    let url = '/api/listings?page='+page;
 
+    for (const key of Object.keys(this.filters)){
+      if (key in this.filters) {
+        const val = this.filters[key as keyof AnnonceCollectionFilter];
+
+        if (val !== ''){
+          url += '&' + key + '=' + val;
+        }
+      }
+    }
+    console.log(url);
+    
+    this.httpClient.get<AnnoncesCollection>('https://hb-bc-dwwm-2020.deploy.this-serv.com'+url)
+    .subscribe(
+      (response)=> {
+        this.annoncesArray = response['hydra:member'];
+      }
+    );
   }
 
   public pageChange(page : number): void{
