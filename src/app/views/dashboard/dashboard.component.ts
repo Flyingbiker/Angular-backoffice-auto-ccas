@@ -1,5 +1,5 @@
 import { Usercollection } from 'src/app/interface/user-collection';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserJsonLd } from 'src/app/interface/user-jsonLd';
 import { GarageJsonLd } from 'src/app/interface/garage-jsonLd';
@@ -80,9 +80,7 @@ export class DashboardComponent implements OnInit {
                 let arrayTemp = response['hydra:member'];
                                
                 let len = 0;
-                if (arrayTemp.length < 5) {
-                  len = arrayTemp.length;
-                } else {
+                if (arrayTemp.length >= 5) {
                   len = arrayTemp.length-5;
                 }
                 for (let i=arrayTemp.length-1; i >= len; i--){
@@ -90,11 +88,16 @@ export class DashboardComponent implements OnInit {
                 } 
                 this.lastAnnoncesNumber = this.arrayLastFiveAnnonces.length;
               },
-              (err) => {console.error(err);}             
+              (err : HttpErrorResponse) => {
+                alert(err);
+                console.error(err.message);}             
             )        
 
         },
-        (err) => {console.error(err);
+        (err: HttpErrorResponse) => {
+          alert(err.message);
+          console.error(err.message);
+          console.error(err);
         }
       );
     

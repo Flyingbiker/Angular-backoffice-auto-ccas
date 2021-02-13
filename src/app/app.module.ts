@@ -83,8 +83,7 @@ export function tokenGetter() {
     AuthService,
     CanActivateGuard,
     GarageService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-    // TokenStorageService
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}    
   ],
   bootstrap: [AppComponent]
 })

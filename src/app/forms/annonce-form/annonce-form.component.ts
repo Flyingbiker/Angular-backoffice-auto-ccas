@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { AnnonceJsonLd } from 'src/app/interface/annonces-jsonLd';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -123,7 +123,9 @@ export class AnnonceFormComponent implements OnInit {
           this.router.navigate(['annonces/annonce/'+id]);
 
         },
-        (error) => {console.log('erreur de la requète d\'ajout : '+ error);
+        (error : HttpErrorResponse) => {
+          console.log('erreur de la requète d\'ajout : '+ error.message);
+          alert(error.message)
         }
       );
       

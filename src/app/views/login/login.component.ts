@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Login } from 'src/app/interface/login';
+import { TokenJwt } from 'src/app/interface/token';
 
 @Component({
   selector: 'app-login',
@@ -41,9 +42,11 @@ export class LoginComponent implements OnInit {
 
       this.httpClient.post<Login>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/login', this.login)
         .subscribe(
-          (response : Object)=> {
-            console.log(typeof(response), response)    
-            this.authService.token = response;      
+          (response)=> {
+            console.log(typeof(response), response) 
+            console.log(this.authService.token);
+               
+            this.authService.token = response.token;      
             this.authService.isAuth = this.authStatus = true;        
             this.router.navigate(['dashboard']) ;
 

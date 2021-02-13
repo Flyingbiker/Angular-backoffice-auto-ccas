@@ -10,7 +10,7 @@ export class AuthService {
   // private username = 'admin';
   // private password = 'admin';
   //converti avec bcrypt
-  public token : TokenJwt|null = null;
+  public token : TokenJwt|undefined;
 
   public isAuth = false;
   public isAuthSubject = new Subject<boolean>();
