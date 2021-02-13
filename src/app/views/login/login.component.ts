@@ -1,8 +1,9 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DashboardComponent } from './../dashboard/dashboard.component';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Login } from 'src/app/interface/login';
 
 @Component({
   selector: 'app-login',
@@ -11,37 +12,49 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  public login : Login ={
+    username : '', 
+    password : ''
+  } ;
+
   public authStatus : Boolean | undefined;
   public loginForm = new FormGroup({
-    email : new FormControl('', Validators.required),
+    username : new FormControl('', Validators.required),
     password : new FormControl('', Validators.required)
   });
 
-  get email() {return this.loginForm.get('email')};
+  get username() {return this.loginForm.get('username')};
   get password() {return this.loginForm.get('password')};
 
   constructor(private authService :AuthService,
-              private router : Router) { }
+              private router : Router,
+              private httpClient : HttpClient) { }
 
   ngOnInit(): void {
     this.authStatus = this.authService.isAuth;
   }
   public onSignIn() : void {  
-    if (this.email !== null && this.password !==null){
-      if ( this.authService.compareData(this.email.value, this.password.value) ){
-        this.authService.isAuth = this.authStatus = true;
-        this.router.navigate(['dashboard']) ;
-      } else {
-        alert('couple login / mot de passe incorrect');
+    if (this.username !== null && this.password !==null){
+      this.login.username = this.username.value;
+      this.login.password = this.password.value;
+      console.log(this.login);      
+
+      this.httpClient.post<Login>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/login', this.login)
+        .subscribe(
+          (response : Object)=> {
+            console.log(typeof(response), response)    
+            this.authService.token = response;      
+            this.authService.isAuth = this.authStatus = true;        
+            this.router.navigate(['dashboard']) ;
+
+            this.authService.emitIsAuthSubject();
+
+          },
+          (err)  => {
+            alert('erreur lors de la connexion : ' + err);
+            console.error(err);}
+        );
       }
-    }
-       
-    // this.authService.signIn().then(
-    //   ()=>{
-    //     console.log('signin successful ! ');
-    //     this.authStatus = this.authService.isAuth;      
-    //     this.router.navigate(['dashboard'])  
-    //   }
-    // )
+
   }
 }

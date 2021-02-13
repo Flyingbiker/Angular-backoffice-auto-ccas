@@ -50,7 +50,14 @@
                   </div>
                 </div>                
             </li>
-        </ul>        
-        <button type="button" class="btn-close btn btn-warning" aria-label="Close" (click)="onSignOut()">Déconnexion</button>
+        </ul>    
+        <div *ngIf="loginSubscription === true">
+            <p>Bonjour Admin</p>
+            <button type="button" class="btn-close btn btn-warning" aria-label="Close" (click)="onSignOut()">
+                Déconnexion
+            </button>
+
+        </div>
+
     </div>
 </nav>
