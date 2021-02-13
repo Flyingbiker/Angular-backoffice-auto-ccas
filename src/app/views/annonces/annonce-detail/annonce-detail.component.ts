@@ -1,7 +1,8 @@
 import { AnnonceJsonLd } from 'src/app/interface/annonces-jsonLd';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-annonce-detail',
@@ -35,10 +36,11 @@ export class AnnonceDetailComponent implements OnInit {
   }
 
   public deleteAnnonce(annonce : number): void {
-    if (confirm("Etes-vous sur de vouloir supprimer cete annonce ?")){
+    if (confirm("Etes-vous sur de vouloir supprimer cette annonce ?")){
+      
       this.httpClient.delete<AnnonceJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/listings/'+annonce)
         .subscribe({
-          next: (response)=> {
+          next: ()=> {
             alert('suppression de l\'annonce confirmée');
             this.router.navigate(['/annonces']);
           },

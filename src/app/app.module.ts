@@ -1,3 +1,4 @@
+import { GarageService } from './services/garage.service';
 import { CanActivateGuard } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
@@ -30,6 +31,13 @@ import { AddGarageComponent } from './views/garages/add-garage/add-garage.compon
 import { GarageFormComponent } from './forms/garage-form/garage-form.component';
 import { AnnonceFormComponent } from './forms/annonce-form/annonce-form.component';
 import { AddAnnonceComponent } from './views/annonces/add-annonce/add-annonce.component';
+import { JwtModule } from "@auth0/angular-jwt";
+// import { AuthInterceptor } from './_helpers/auth.intercerptor';
+// import { TokenStorageService } from './_helpers/auth.intercerptor';
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -57,15 +65,25 @@ import { AddAnnonceComponent } from './views/annonces/add-annonce/add-annonce.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule, 
-    HttpClientModule,
+    NgbModule,     
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,    
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["https://hb-bc-dwwm-2020.deploy.this-serv.com"],
+        headerName: "Header de mon back office",
+      },
+    }),
   ],
   providers: [
     UserService,
     AuthService,
-    CanActivateGuard
+    CanActivateGuard,
+    GarageService,
+    // AuthInterceptor,
+    // TokenStorageService
   ],
   bootstrap: [AppComponent]
 })

@@ -156,10 +156,9 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/users/user/'+index]);
   }
 
-  public deleteUser(user : UserJsonLd): void {
-    let index = user.id;
-    if (index !== undefined) {
-      this.userService.deletUser(index);
+  public deleteUser(user : UserJsonLd): void {    
+    if (user !== undefined) {
+      this.userService.deletUser(user);
     }
   }
 

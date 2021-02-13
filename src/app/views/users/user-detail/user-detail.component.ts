@@ -34,7 +34,7 @@ export class UserDetailComponent implements OnInit {
         }
       )        
   }
-  public deleteUser(user : number): void {
+  public deleteUser(user : UserJsonLd|null): void {
     this.userService.deletUser(user);
   }
   
