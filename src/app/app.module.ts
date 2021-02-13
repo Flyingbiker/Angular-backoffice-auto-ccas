@@ -1,6 +1,6 @@
 import { GarageService } from './services/garage.service';
 import { CanActivateGuard } from './services/auth-guard.service';
-import { HttpClientModule } from '@angular/common/http';
+
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +32,8 @@ import { GarageFormComponent } from './forms/garage-form/garage-form.component';
 import { AnnonceFormComponent } from './forms/annonce-form/annonce-form.component';
 import { AddAnnonceComponent } from './views/annonces/add-annonce/add-annonce.component';
 import { JwtModule } from "@auth0/angular-jwt";
-// import { AuthInterceptor } from './_helpers/auth.intercerptor';
+import { AuthInterceptor } from './_helpers/auth.intercerptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 // import { TokenStorageService } from './_helpers/auth.intercerptor';
 
 export function tokenGetter() {
@@ -82,7 +83,7 @@ export function tokenGetter() {
     AuthService,
     CanActivateGuard,
     GarageService,
-    // AuthInterceptor,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     // TokenStorageService
   ],
   bootstrap: [AppComponent]

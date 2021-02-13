@@ -14,7 +14,7 @@ export class GarageService {
       this.httpClient.delete<GarageJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages/'+garage)
         .subscribe(
           () => {
-            console.log('suppression du garage confirmé'); 
+            alert('suppression du garage confirmé' + garage);            
           },
           (err) => {console.error(err);}          
         )

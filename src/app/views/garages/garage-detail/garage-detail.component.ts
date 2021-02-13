@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GarageJsonLd } from 'src/app/interface/garage-jsonLd';
 import { Component, OnInit } from '@angular/core';
 import { Garage } from 'src/app/interface/garage';
+import { GarageService } from 'src/app/services/garage.service';
 
 @Component({
   selector: 'app-garage-detail',
@@ -16,7 +17,8 @@ export class GarageDetailComponent implements OnInit {
 
   constructor(private route : ActivatedRoute,
               private httpClient : HttpClient,
-              private router :  Router
+              private router :  Router,
+              private garageService : GarageService
               ) { }
 
   ngOnInit(): void {
@@ -36,16 +38,8 @@ export class GarageDetailComponent implements OnInit {
   }
 
   public deleteGarage(garage : number): void {
-    if (confirm("Etes-vous sur de vouloir supprimer ce garage ?")){
-      this.httpClient.delete<GarageJsonLd>('https://hb-bc-dwwm-2020.deploy.this-serv.com/api/garages/'+garage)
-        .subscribe(
-          (response) => {
-            alert('suppression du garage confirmé');
-            this.router.navigate(['/garages']);
-          },
-          (err) => {console.error(err);}          
-        )
-    }
+    this.garageService.deleteGarage(garage);
+    this.router.navigate(['/garages']);    
 
   }
 
