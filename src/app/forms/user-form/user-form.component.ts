@@ -24,7 +24,8 @@ export class UserFormComponent implements OnInit {
   get email() {return this.addUserForm.get('email');}
   get phone() {return this.addUserForm.get('phone');}
   get siret() {return this.addUserForm.get('siret');}
-  get garages() {return this.addUserForm.get('garages');}
+  get garages() {return this.addUserForm.get('garages');}  
+  
 
   //pour afficher les données lors de l'ouverture du formulaire
   public userModel = {
@@ -33,7 +34,7 @@ export class UserFormComponent implements OnInit {
     email : this.user?.email ,
     phone : (this.user?.phone !== null ? this.user?.phone : null),
     siret : (this.user?.siret !== null ? this.user?.siret : null),
-    garages : this.user?.garages
+    garages : (this.user?.garages !== null ? this.user?.garages : []), 
   }
   //setter pour récupérer les informations à la création du composant
   @Input()
@@ -55,7 +56,7 @@ export class UserFormComponent implements OnInit {
     }
     if (userModel?.garages) {
       this.addUserForm.get('garages')?.setValue(userModel.garages);
-    }
+    }        
   }
   
   public addUserForm = new FormGroup({
@@ -76,13 +77,28 @@ export class UserFormComponent implements OnInit {
                                       Validators.maxLength(20)
                                     ]),
     siret :  new FormControl('', [Validators.minLength(14), Validators.maxLength(14)]),
-    garages : new FormControl(''), 
-    // garages : new FormArray([new FormControl('') ])
+    // garages : new FormControl(''), 
+    garages : this.formBuilder.array([])
   }); 
+
+  public garagesArray() : FormArray { 
+    return this.addUserForm.get('garages') as FormArray;
+  }
+
+  public onAddGarage() : void{
+    const newGarageControl = this.formBuilder.control(null, Validators.required);
+    this.garagesArray().push(newGarageControl);
+  }
+
+  public onDeleteLastGarage() : void{
+    const lengthArray = this.garagesArray().length;
+    this.garagesArray().removeAt(lengthArray-1);
+  }
 
   constructor(private httpClient : HttpClient,
     private router : Router,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {  }
 
@@ -93,8 +109,7 @@ export class UserFormComponent implements OnInit {
       firstName :  user.firstName,
       email :  user.email,
       phone : user.phone ,
-      siret :  user.siret,
-    // 'garages' : new FormControl(''),
+      siret :  user.siret,  
       garages: user.garages ? user.garages : []
     }
     // this.addUser = this.addUserForm.value;

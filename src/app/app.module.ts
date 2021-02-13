@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './views/users/add-user/add-user.component';
 import { UserDetailComponent } from './views/users/user-detail/user-detail.component';
 import { UsersComponent } from './views/users/users/users.component';
-
 import { GaragesComponent } from './views/garages/garages/garages.component';
 import { GarageDetailComponent } from './views/garages/garage-detail/garage-detail.component';
 import { EditGarageComponent } from './views/garages/edit-garage/edit-garage.component';
