@@ -76,7 +76,6 @@ export class UserFormComponent implements OnInit {
                                       Validators.maxLength(20)
                                     ]),
     siret :  new FormControl('', [Validators.minLength(14), Validators.maxLength(14)]),
-    // 'garages' : new FormControl(''),
     garages : new FormControl(''), 
     // garages : new FormArray([new FormControl('') ])
   }); 
