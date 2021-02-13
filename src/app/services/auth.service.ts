@@ -1,5 +1,6 @@
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { TokenJwt } from '../interface/token';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthService {
   // private username = 'admin';
   // private password = 'admin';
   //converti avec bcrypt
-  public token : Object = {};
+  public token : TokenJwt|null = null;
 
   public isAuth = false;
   public isAuthSubject = new Subject<boolean>();
